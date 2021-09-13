@@ -1,0 +1,91 @@
+USE [FactoryManagementDB]
+GO
+
+INSERT INTO [dbo].[Role]
+           ([Id]
+           ,[CreatedDateTime]
+           ,[UpdatedDateTime]
+           ,[FactoryId]
+           ,[RowStatus]
+           ,[Name]
+           ,[Item]
+           ,[ItemCategory]
+           ,[Equipment]
+           ,[EquipmentCategory]
+           ,[Stock]
+           ,[PurchaseReturn]
+           ,[SalesReturn]
+           ,[Staff]
+           ,[Customer0]
+           ,[Supplier]
+           ,[StaffHistory]
+           ,[Production]
+           ,[CustomerHistory]
+           ,[SupplierHistory]
+           ,[MonthlyIncomeReport]
+           ,[MonthlyExpenseReport]
+           ,[MonthlyPayableReport]
+           ,[MonthlyReceivableReport]
+           ,[MonthlyAccountReport]
+           ,[MonthlyProductionReport]
+           ,[StaffPayment]
+           ,[CustomerPayment]
+           ,[SupplierPayment]
+           ,[Department]
+           ,[Sales]
+           ,[Purchase]
+           ,[Income]
+           ,[Expense]
+           ,[IncomeType]
+           ,[ExpenseType]
+           ,[InvoiceType]
+           ,[ItemStatus]
+           ,[PaymentStatus]
+           ,[Factory]
+           ,[Registration])
+     VALUES
+           ('8d12caf1-4a18-4ca8-8975-1d960767a924'
+           ,'2020-03-26 21:13:42.6027125'
+           ,'2020-03-26 21:13:42.6027125'
+           ,'c90a9cdf-ca6b-4f74-b9f6-d00cd37b1b30'
+           ,'ADDED'
+           ,'SUPER_ADMIN'
+           ,1
+           ,1
+
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+           		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		   		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+           ,1
+		              ,1
+		              ,1
+           ,1)
+GO
+
+

@@ -1,0 +1,12 @@
+﻿delete from Expense
+delete from Income
+delete from Invoice
+delete from Payable
+delete from Production
+delete from Purchase
+delete from Receivable
+delete from Sales
+delete from StockIn
+delete from StockOut
+delete from TblTransaction
+delete from Purchase

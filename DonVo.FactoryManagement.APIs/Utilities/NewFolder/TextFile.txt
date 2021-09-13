@@ -1,0 +1,12 @@
+﻿--- Income  - PurchaseReturn,Sales,ManualAdd,RecieveFromCustomer,
+
+ -- Expense - Purchase, ManualAdd, SalesReturn, SupplierPayment,StaffPayment
+
+----Payable - SalesReturn, Purchase,Production,
+
+----Receivable - Sales,PurchaseReturn
+
+Transaction - PurchaseReturn, Purchase, Sales, SalesReturn,RecieveFromCustomer, ManualAddIncome, ManualAddExpense
+              PayToSupplier, PayToStaff, 
+
+---Production - 
