@@ -35,7 +35,6 @@ namespace Service.BusinessServices
                 x.Name.Contains(dataListVM.GlobalFilter);
             }
 
-
             var itemCatagoryList = await _repositoryWrapper.ExpenseType
                 .FindAll()
                 .Where(x => x.FactoryId == dataListVM.FactoryId)
@@ -57,6 +56,7 @@ namespace Service.BusinessServices
 
             return wrapper;
         }
+
         public async Task<WrapperExpenseTypeListVM> Add(ExpenseTypeVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<ExpenseTypeVM, ExpenseType>(vm);
@@ -75,9 +75,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperExpenseTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperExpenseTypeListVM> Update(string id, ExpenseTypeVM vm)
         {
             IEnumerable<ExpenseType> ItemDB = await _repositoryWrapper.ExpenseType.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -85,7 +87,6 @@ namespace Service.BusinessServices
             _repositoryWrapper.ExpenseType.Update(ItemUpdated);
             await _repositoryWrapper.ExpenseType.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
-
 
             var dataParam = new GetDataListVM()
             {
@@ -97,6 +98,7 @@ namespace Service.BusinessServices
             WrapperExpenseTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperExpenseTypeListVM> Delete(ExpenseTypeVM itemTemp)
         {
             IEnumerable<ExpenseType> itemTask = await _repositoryWrapper.ExpenseType.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -116,15 +118,9 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperExpenseTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
-
-
-
-
-
-
-
     }
 }

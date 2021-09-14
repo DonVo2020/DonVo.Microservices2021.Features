@@ -19,11 +19,13 @@ namespace DonVo.MessagingService.API.Services
     {
         private readonly string JwtSecret;
         private readonly int TokenExpireIn;
+
         public JwtService(IConfiguration configuration)
         {
             JwtSecret = configuration.GetValue<string>("Security:JwtSecret");
             TokenExpireIn = configuration.GetValue<int>("Security:TokenExpireIn");
         }
+
         public string CreateToken(Dictionary<string, string> claims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -37,6 +39,7 @@ namespace DonVo.MessagingService.API.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
         public Dictionary<string, string> Resolve(string token)
         {
             if (string.IsNullOrEmpty(token))

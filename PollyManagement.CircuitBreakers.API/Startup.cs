@@ -66,8 +66,10 @@ namespace PollyManagement.CircuitBreakers.API
                 },
                 onReset: () =>
                 {
-                    var test = "";         
-                    //Policy did reset
+#pragma warning disable CS0219 // Variable is assigned but its value is never used
+                    var test = "";
+#pragma warning restore CS0219 // Variable is assigned but its value is never used
+                              //Policy did reset
                 });
     }
 }

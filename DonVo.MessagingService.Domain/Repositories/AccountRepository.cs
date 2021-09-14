@@ -40,7 +40,6 @@ namespace DonVo.MessagingService.Domain.Repositories
                 throw new System.Exception($"Account doesn't exist ({opponent})");
             }
 
-
             if (opponentUser.BlockedUsers is null)
             {
                 return false;
@@ -52,11 +51,8 @@ namespace DonVo.MessagingService.Domain.Repositories
         public void UpdateLastLogin(string userId)
         {
             var user = GetById(userId);
-
             user.LastLogin = System.DateTime.UtcNow;
-
             Update(user);
         }
     }
-
 }

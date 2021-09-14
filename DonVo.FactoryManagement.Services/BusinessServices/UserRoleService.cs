@@ -10,7 +10,6 @@ namespace Service.BusinessServices
     public class UserRoleService : IUserRoleService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public UserRoleService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -30,6 +29,7 @@ namespace Service.BusinessServices
                 .ToList().FirstOrDefault();
             return userRole; 
         }
+
         public async Task<UserRole> GetUserRoleAsync(string UserId)
         {
             var userRole = await _repositoryWrapper

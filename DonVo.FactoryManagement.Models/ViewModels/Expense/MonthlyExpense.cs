@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Expense
 {
-   public class MonthlyExpense
+    public class MonthlyExpense
     {
         public DateTime CreatedDateTime { get; set; }
         public string FactoryId { get; set; }

@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class ReceivableService : IReceivableService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public ReceivableService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)

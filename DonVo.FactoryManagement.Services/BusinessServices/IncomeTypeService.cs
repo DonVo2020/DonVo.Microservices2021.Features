@@ -14,7 +14,6 @@ namespace Service.BusinessServices
     public class IncomeTypeService : IIncomeTypeService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public IncomeTypeService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -22,6 +21,7 @@ namespace Service.BusinessServices
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperIncomeTypeListVM> GetListPaged(GetDataListVM dataListVM)
         {
             System.Linq.Expressions.Expression<Func<IncomeType, bool>> globalFilterExpression = (x) => true;
@@ -34,7 +34,6 @@ namespace Service.BusinessServices
                 globalFilterExpression = (x) =>
                 x.Name.Contains(dataListVM.GlobalFilter);
             }
-
 
             var itemCatagoryList = await _repositoryWrapper.IncomeType
                 .FindAll()
@@ -57,6 +56,7 @@ namespace Service.BusinessServices
 
             return wrapper;
         }
+
         public async Task<WrapperIncomeTypeListVM> Add(IncomeTypeVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<IncomeTypeVM, IncomeType>(vm);
@@ -75,9 +75,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperIncomeTypeListVM> Update(string id, IncomeTypeVM vm)
         {
             IEnumerable<IncomeType> ItemDB = await _repositoryWrapper.IncomeType.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -86,7 +88,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.IncomeType.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -94,9 +95,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperIncomeTypeListVM> Delete(IncomeTypeVM itemTemp)
         {
             IEnumerable<IncomeType> itemTask = await _repositoryWrapper.IncomeType.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -116,6 +119,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeTypeListVM data = await GetListPaged(dataParam);
             return data;
         }

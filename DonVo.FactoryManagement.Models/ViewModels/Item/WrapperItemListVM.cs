@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Item
 {
-   public class WrapperItemListVM
+    public class WrapperItemListVM
     {
         public long TotalRecords { get; set; }
         public List<ItemVM> ListOfData { get; set; }
-
     }
 }

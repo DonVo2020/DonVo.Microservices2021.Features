@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.Enums
+﻿namespace DonVo.FactoryManagement.Models.Enums
 {
     public enum PAYMENT_STATUS
     {
@@ -11,8 +7,9 @@ namespace DonVo.FactoryManagement.Models.Enums
         CASH_Receivable,
         CASH_PAID
     }
-    public enum MAX_ROW_NO { 
-    COUNT = 1000
-    
+
+    public enum MAX_ROW_NO 
+    { 
+        COUNT = 1000   
     }
 }

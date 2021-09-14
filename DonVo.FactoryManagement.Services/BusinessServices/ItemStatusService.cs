@@ -13,7 +13,6 @@ namespace Service.BusinessServices
     public class ItemStatusService : IItemStatusService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public ItemStatusService(IRepositoryWrapper repositoryWrapper,IUtilService utilService)
@@ -40,9 +39,11 @@ namespace Service.BusinessServices
                 ListOfData = itemVMLists,
                 TotalRecords = dataRowCount
             };
+
             this._utilService.Log("Successful In Getting  Item Status");
             return wrapper;
         }
+
         public async Task<WrapperItemStatusListVM> Add(ItemStatusVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<ItemStatusVM, ItemStatus>(vm);
@@ -61,9 +62,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperItemStatusListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperItemStatusListVM> Update(string id, ItemStatusVM vm)
         {
             IEnumerable<ItemStatus> ItemDB = await _repositoryWrapper.ItemStatus.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -72,7 +75,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.ItemStatus.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -80,9 +82,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperItemStatusListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperItemStatusListVM> Delete(ItemStatusVM itemTemp)
         {
             IEnumerable<ItemStatus> itemTask = await _repositoryWrapper.ItemStatus.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -102,6 +106,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperItemStatusListVM data = await GetListPaged(dataParam);
             return data;
         }

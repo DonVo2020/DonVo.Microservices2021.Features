@@ -55,6 +55,7 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
@@ -178,12 +179,12 @@ namespace DonVo.MessagingService.API.xUnitTest
                 Setup(x => x.DoesExist(It.IsAny<Expression<Func<AccountModel, bool>>>())).
                 Returns(true);
 
-
             var headers = new HeaderDictionary(new Dictionary<String, StringValues>
             {
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
 
@@ -239,8 +240,10 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
+
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
@@ -251,6 +254,7 @@ namespace DonVo.MessagingService.API.xUnitTest
                 ReceiverUser = "receiverUser",
                 SenderUser = "senderUser",
             };
+
             messageRepositoryMock.
                Setup(x => x.GetSingleMessage(It.IsAny<string>(), It.IsAny<string>())).
                Returns(message);
@@ -273,6 +277,7 @@ namespace DonVo.MessagingService.API.xUnitTest
             var headers = new HeaderDictionary(new Dictionary<String, StringValues>()) as IHeaderDictionary;
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
+
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
@@ -296,12 +301,14 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             messageRepositoryMock.
               Setup(x => x.GetSingleMessage(It.IsAny<string>(), It.IsAny<string>())).
               Throws(new Exception("Couldn't find message"));
@@ -327,21 +334,23 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             List<string> messageIdList = new()
             {
                 "messageId1",
                 "messageId2",
             };
+
             messageRepositoryMock.
                 Setup(x => x.GetOlderMessages(It.IsAny<string>(), It.IsAny<string>())).
                 Returns(messageIdList);
-
 
             var actionResult = messagesController.GetOlderMessagesFrom(messageId);
             Assert.IsType<OkObjectResult>(actionResult);
@@ -349,7 +358,6 @@ namespace DonVo.MessagingService.API.xUnitTest
             var result = actionResult as OkObjectResult;
             var response = result.Value as LastMessagesResponse;
             Assert.Equal(messageIdList, response.MessageIdList);
-
         }
 
         [Fact]
@@ -359,6 +367,7 @@ namespace DonVo.MessagingService.API.xUnitTest
             var headers = new HeaderDictionary(new Dictionary<String, StringValues>()) as IHeaderDictionary;
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
+
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
@@ -382,12 +391,14 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             messageRepositoryMock.
               Setup(x => x.GetOlderMessages(It.IsAny<string>(), It.IsAny<string>())).
               Throws(new Exception("Couldn't get messages"));
@@ -414,12 +425,14 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             var messageId = "messageId";
             messageRepositoryMock.
                Setup(x => x.GetLatestMessage(It.IsAny<string>(), It.IsAny<string>())).
@@ -441,6 +454,7 @@ namespace DonVo.MessagingService.API.xUnitTest
             var headers = new HeaderDictionary(new Dictionary<String, StringValues>()) as IHeaderDictionary;
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
+
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
@@ -464,12 +478,14 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             messageRepositoryMock.
               Setup(x => x.GetLatestMessage(It.IsAny<string>(), It.IsAny<string>())).
               Throws(new Exception("Couldn't find message"));
@@ -499,6 +515,7 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
@@ -518,6 +535,7 @@ namespace DonVo.MessagingService.API.xUnitTest
             {
                 Opponent = "OpponentUser"
             };
+
             var headers = new HeaderDictionary(new Dictionary<String, StringValues>()) as IHeaderDictionary;
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
@@ -547,12 +565,14 @@ namespace DonVo.MessagingService.API.xUnitTest
                 { "UserName", "senderusername" },
                 { "Id", "senderuserid" },
             }) as IHeaderDictionary;
+
             requestMock.Setup(x => x.Headers).Returns(headers);
             contextMock.Setup(x => x.Request).Returns(requestMock.Object);
             messagesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = contextMock.Object
             };
+
             accountRepositoryMock.
               Setup(x => x.BlockUser(It.IsAny<string>(), It.IsAny<string>())).
               Throws(new Exception("Couldn't block user"));

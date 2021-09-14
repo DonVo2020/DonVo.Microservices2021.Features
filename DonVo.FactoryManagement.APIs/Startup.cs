@@ -43,6 +43,7 @@ namespace DonVo.FactoryManagement.APIs
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             //services.ConfigureSwagger();
+
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {

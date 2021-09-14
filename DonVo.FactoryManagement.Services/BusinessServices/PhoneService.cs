@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class PhoneService : IPhoneService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public PhoneService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)

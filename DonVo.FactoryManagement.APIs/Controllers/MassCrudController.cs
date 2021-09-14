@@ -30,19 +30,25 @@ namespace DonVo.FactoryManagement.APIs.Controllers
     [ApiController]
     public class MassCrudController : ControllerBase
     {
-        private readonly FactoryManagementContext _context;
+        //private readonly FactoryManagementContext _context;
         private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IServiceWrapper _serviceWrapper;
         private readonly ILoggerManager _logger;
         private readonly IUtilService _utilService;
-        public MassCrudController(FactoryManagementContext context, IRepositoryWrapper repositoryWrapper, IServiceWrapper serviceWrapper, ILoggerManager logger,IUtilService utilService)
+        public MassCrudController(
+            //FactoryManagementContext context, 
+            IRepositoryWrapper repositoryWrapper, 
+            IServiceWrapper serviceWrapper, 
+            ILoggerManager logger,
+            IUtilService utilService)
         {
-            _context = context;
+            //_context = context;
             _repositoryWrapper = repositoryWrapper;
             _serviceWrapper = serviceWrapper;
             _logger = logger;
             _utilService = utilService;
         }
+
         #region ExpenseType
         [HttpPost]
         [Route("ExpenseType/getAll")]
@@ -51,8 +57,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.ExpenseTypeService.GetListPaged(customer);
         }
 
-
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("ExpenseType/update/{id}")]
         [HttpPost]
@@ -60,7 +64,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.ExpenseTypeService.Update(id, ExpenseType);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -78,6 +81,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region IncomeType
         [HttpPost]
         [Route("IncomeType/getAll")]
@@ -86,8 +90,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.IncomeTypeService.GetListPaged(customer);
         }
 
-
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("IncomeType/update/{id}")]
         [HttpPost]
@@ -95,7 +97,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.IncomeTypeService.Update(id, IncomeType);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -113,6 +114,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region InvoiceType
         [HttpPost]
         [Route("InvoiceType/getAll")]
@@ -121,8 +123,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.InvoiceTypeService.GetListPaged(customer);
         }
 
-
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("InvoiceType/update/{id}")]
         [HttpPost]
@@ -130,7 +130,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.InvoiceTypeService.Update(id, InvoiceType);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -148,6 +147,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Department
         [HttpPost]
         [Route("Department/getAll")]
@@ -156,8 +156,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.DepartmentService.GetListPaged(customer);
         }
 
-
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("Department/update/{id}")]
         [HttpPost]
@@ -165,7 +163,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.DepartmentService.Update(id, Department);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -183,6 +180,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Equipment
         [HttpPost]
         [Route("Equipment/getAll")]
@@ -191,8 +189,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.EquipmentService.GetListPaged(customer);
         }
 
-
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("Equipment/update/{id}")]
         [HttpPost]
@@ -200,7 +196,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.EquipmentService.Update(id, Equipment);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -218,6 +213,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion       
+
         #region EquipmentCategory
         [HttpPost]
         [Route("EquipmentCategory/getAll")]
@@ -233,7 +229,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.EquipmentCategoryService.Update(id, EquipmentCategory);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -251,6 +246,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Production
         [HttpPost]
         [Route("Production/getAll")]
@@ -266,7 +262,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.ProductionService.Update(id, Production);
         }
-
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
@@ -284,6 +279,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Stock
         [HttpPost]
         [Route("stock/getAll")]
@@ -299,7 +295,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperStockListVM>> UpdateStock(string id, [FromBody]StockVM temp)
         {
-            WrapperStockListVM result = new WrapperStockListVM();
+            WrapperStockListVM result = new();
             result = await _serviceWrapper.StockService.Update(id, temp);
             _utilService.Log("Stock Successfully Updated");
             return Ok(result);
@@ -310,7 +306,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperStockListVM>> AddStock([FromBody]StockVM VM)
         {
-            WrapperStockListVM result = new WrapperStockListVM();
+            WrapperStockListVM result = new();
             VM.ExpiryDate = VM.ExpiryDate.ToLocalTime();
             result = await _serviceWrapper.StockService.Add(VM);
             _utilService.Log("Stock Successfully Added");
@@ -321,13 +317,14 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [Route("stock/delete")]
         public async Task<ActionResult<WrapperStockListVM>> DeleteStock([FromBody]StockVM Temp)
         {
-            WrapperStockListVM vb = new WrapperStockListVM();
+            WrapperStockListVM vb = new();
             vb = await _serviceWrapper.StockService.Delete(Temp);
             _utilService.Log("Stock Successfully Deleted");
             return vb;
         }
 
         #endregion
+
         #region ItemCategory
         // GET: api/ItemCategories
         [HttpPost]
@@ -380,13 +377,13 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.ItemCategoryService.Delete(itemVM);
         }
-
-        private bool ItemCategoryExists(string name)
-        {
-            return _context.ItemCategory.Any(e => e.Name == name);
-        }
+        //private bool ItemCategoryExists(string name)
+        //{
+        //    return _context.ItemCategory.Any(e => e.Name == name);
+        //}
 
         #endregion
+
         #region Item
         [HttpPost]
         [Route("Item/getAll")]
@@ -395,7 +392,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             var data = await _serviceWrapper.ItemService.GetListPaged(dataParam);
             return Ok(data);
         }
-
 
         [HttpPost]
         [Route("Item/getById")]
@@ -412,7 +408,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return item;
         }
 
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [Route("Item/update/{id}")]
@@ -422,15 +417,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.ItemService.Update(id, item));
         }
 
-
         [HttpPost]
         [Route("Item/add")]
         public async Task<ActionResult<WrapperItemListVM>> AddItem([FromBody]ItemVM item)
         {
-
             return Ok(await _serviceWrapper.ItemService.Add(item));
         }
-
 
         [HttpPost]
         [Route("Item/delete")]
@@ -439,11 +431,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.ItemService.Delete(itemVM));
         }
 
-        private bool ItemExists(string CategoryId, decimal? UnitPrice, string Name)
-        {
-            return _context.Item.Any(e => e.CategoryId == CategoryId && e.UnitPrice == UnitPrice && e.Name == Name);
-        }
+        //private bool ItemExists(string CategoryId, decimal? UnitPrice, string Name)
+        //{
+        //    return _context.Item.Any(e => e.CategoryId == CategoryId && e.UnitPrice == UnitPrice && e.Name == Name);
+        //}
         #endregion
+
         #region ItemStatus
 
         [HttpPost]
@@ -453,7 +446,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             var data = await _serviceWrapper.ItemStatusService.GetListPaged(dataParam);
             return Ok(data);
         }
-
 
         [HttpPost]
         [Route("Item/status/getById")]
@@ -470,14 +462,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return ItemStatus;
         }
 
-
         [Route("Item/status/update/{id}")]
         [HttpPost]
         public async Task<ActionResult<WrapperItemStatusListVM>> UpdateItemStatus(string id, [FromBody]ItemStatusVM ItemStatus)
         {
             return await _serviceWrapper.ItemStatusService.Update(id, ItemStatus);
         }
-
 
         [HttpPost]
         [Route("Item/status/add")]
@@ -495,6 +485,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Customer
         // GET: api/Customers/ii
         [HttpPost]
@@ -505,13 +496,11 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(data);
         }
 
-
-
         [Route("Customer/update/{id}")]
         [HttpPost]
         public async Task<ActionResult<WrapperListCustomerVM>> UpdateCustomer(string id, [FromBody]CustomerVM customer)
         {
-            WrapperListCustomerVM result = new WrapperListCustomerVM();
+            WrapperListCustomerVM result = new();
             result = await _serviceWrapper.CustomerService.Update(id, customer);
             _logger.LogInfo("Customer Successfully Updated");
             return Ok(result);
@@ -521,11 +510,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperListCustomerVM>> AddCustomer([FromBody]CustomerVM customerVM)
         {
-            WrapperListCustomerVM result = new WrapperListCustomerVM();
+            WrapperListCustomerVM result = new();
             result = await _serviceWrapper.CustomerService.Add(customerVM);
             _logger.LogInfo("Customer Successfully Added");
             return Ok(result);
         }
+
         // DELETE: api/Customers/5
         [HttpPost]
         [Route("Customer/delete")]
@@ -533,11 +523,13 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         {
             return await _serviceWrapper.CustomerService.Delete(customerTemp);
         }
-        private bool CustomerExists(string Name, string Email)
-        {
-            return _context.Customer.Any(e => e.Email == Email && e.Name == Name);
-        }
+
+        //private bool CustomerExists(string Name, string Email)
+        //{
+        //    return _context.Customer.Any(e => e.Email == Email && e.Name == Name);
+        //}
         #endregion
+
         #region Expense
         [HttpPost]
         [Route("Expense/getAll")]
@@ -546,6 +538,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             var data = await _serviceWrapper.ExpenseService.GetListPaged(dataParam);
             return Ok(data);
         }
+
         [HttpPost]
         [Route("Expense/add")]
         public async Task<ActionResult<WrapperExpenseListVM>> AddExpense([FromBody]ExpenseVM Expense)
@@ -554,7 +547,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.ExpenseService.Add(Expense));
         }
 
-
         [HttpPost]
         [Route("Expense/delete")]
         public async Task<ActionResult<WrapperExpenseListVM>> DeleteExpense([FromBody]ExpenseVM ExpenseVM)
@@ -562,6 +554,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.ExpenseService.Delete(ExpenseVM));
         }
         #endregion
+
         #region Income
         [HttpPost]
         [Route("Income/getAll")]
@@ -570,6 +563,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             var data = await _serviceWrapper.IncomeService.GetListPaged(dataParam);
             return Ok(data);
         }
+
         [HttpPost]
         [Route("Income/add")]
         public async Task<ActionResult<WrapperIncomeListVM>> AddIncome([FromBody]IncomeVM Income)
@@ -578,7 +572,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.IncomeService.Add(Income));
         }
 
-
         [HttpPost]
         [Route("Income/delete")]
         public async Task<ActionResult<WrapperIncomeListVM>> DeleteIncome([FromBody]IncomeVM IncomeVM)
@@ -586,6 +579,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(await _serviceWrapper.IncomeService.Delete(IncomeVM));
         }
         #endregion
+
         #region PaymentStatus
 
         [HttpPost]
@@ -595,7 +589,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             var data = await _serviceWrapper.PaymentStatusService.GetListPaged(dataParam);
             return Ok(data);
         }
-
 
         // GET: api/ItemCategories/5
         [HttpPost]
@@ -612,7 +605,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
 
             return PaymentStatus;
         }
-
 
         [Route("payment/status/update/{id}")]
         [HttpPost]
@@ -631,7 +623,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.PaymentStatusService.Add(PaymentStatus);
         }
 
-
         [HttpPost]
         [Route("payment/status/delete")]
         public async Task<ActionResult<WrapperPaymentStatusListVM>> DeletePaymentStatus([FromBody]PaymentStatusVM itemVM)
@@ -640,6 +631,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         }
 
         #endregion
+
         #region Factory
 
         [HttpPost]
@@ -672,14 +664,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.FactoryService.Update(id, Factory);
         }
 
-
         [HttpPost]
         [Route("factory/add")]
         public async Task<ActionResult<WrapperFactoryListVM>> AddFactory([FromBody]FactoryVM Factory)
         {
             return await _serviceWrapper.FactoryService.Add(Factory);
         }
-
 
         [HttpPost]
         [Route("factory/delete")]

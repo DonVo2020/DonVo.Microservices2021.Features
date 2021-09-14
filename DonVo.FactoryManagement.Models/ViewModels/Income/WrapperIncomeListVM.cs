@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Income
 {
-   public  class WrapperIncomeListVM
+    public  class WrapperIncomeListVM
     {
         public long TotalRecords { get; set; }
         public List<IncomeVM> ListOfData { get; set; }

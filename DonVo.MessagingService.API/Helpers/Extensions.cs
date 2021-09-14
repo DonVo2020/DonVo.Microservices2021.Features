@@ -32,8 +32,5 @@ namespace DonVo.MessagingService.API.Helpers
                 ReceiverUser = messageEntity.ReceiverUser,
             };
         }
-
     }
-
-
 }

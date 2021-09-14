@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class StockOutService : IStockOutService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public StockOutService(IRepositoryWrapper repositoryWrapper,  IUtilService utilService)

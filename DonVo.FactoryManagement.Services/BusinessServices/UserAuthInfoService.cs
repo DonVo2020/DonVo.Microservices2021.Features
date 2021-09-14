@@ -21,7 +21,6 @@ namespace Service.BusinessServices
     public class UserAuthInfoService : IUserAuthInfoService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public UserAuthInfoService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -64,6 +63,7 @@ namespace Service.BusinessServices
 
             return wrapper;
         }
+
         public async Task<WrapperUserAuthInfoListVM> Add(UserAuthInfoVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<UserAuthInfoVM, UserAuthInfo>(vm);
@@ -82,9 +82,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperUserAuthInfoListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperUserAuthInfoListVM> Update(string id, UserAuthInfoVM vm)
         {
             IEnumerable<UserAuthInfo> ItemDB = await _repositoryWrapper.UserAuthInfo.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -100,9 +102,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperUserAuthInfoListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperUserAuthInfoListVM> Delete(UserAuthInfoVM itemTemp)
         {
             IEnumerable<UserAuthInfo> itemTask = await _repositoryWrapper.UserAuthInfo.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -122,9 +126,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperUserAuthInfoListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public LoginResponseVM IsUserAuthentic(LoginVM loginVM)
         {
             LoginResponseVM response = new();
@@ -177,6 +183,7 @@ namespace Service.BusinessServices
                 new Claim("FactoryName", resp.FactoryVM.Name),
                 new Claim("FactoryId", resp.FactoryVM.Id)
             };
+
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
@@ -192,6 +199,7 @@ namespace Service.BusinessServices
             return tokenString;
             // return Ok(new { Token = tokenString });
         }
+
         /// <summary>
         /// https://dotnetcoretutorials.com/2020/01/15/creating-and-validating-jwt-tokens-in-asp-net-core/
         /// </summary>

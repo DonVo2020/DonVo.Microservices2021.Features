@@ -28,7 +28,6 @@ namespace DonVo.MessagingService.API.Controllers
             this.logger = logger;
         }
 
-
         [HttpPost(nameof(Login))]
         [ProducesResponseType(typeof(LoginResponse), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -123,5 +122,4 @@ namespace DonVo.MessagingService.API.Controllers
             }
         }
     }
-
 }

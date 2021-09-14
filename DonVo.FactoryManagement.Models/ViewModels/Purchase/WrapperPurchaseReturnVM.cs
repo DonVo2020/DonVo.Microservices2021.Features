@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
 {
-   public class WrapperPurchaseReturnVM
+    public class WrapperPurchaseReturnVM
     {
-
-        public WrapperPurchaseReturnVM() {
+        public WrapperPurchaseReturnVM() 
+        {
             this.ListOfData = new List<PurchaseReturnVM>();
-
         }
 
         public List<PurchaseReturnVM> ListOfData { get; set; }
         public long TotalRecords { get; set; }
-
     }
 }

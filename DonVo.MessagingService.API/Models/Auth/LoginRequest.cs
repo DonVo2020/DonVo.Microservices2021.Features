@@ -22,7 +22,6 @@ namespace DonVo.MessagingService.API.Models.Auth
                 Matches("[a-z]").WithMessage("Password must contain a lowercase letter").
                 Matches("[A-Z]").WithMessage("Password must contain a uppercase letter").
                 Matches("[0-9]").WithMessage("Password must contain a digit");
-
         }
     }
 }

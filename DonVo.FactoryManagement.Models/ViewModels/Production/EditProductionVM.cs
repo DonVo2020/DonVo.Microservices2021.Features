@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Production
 {
-  public  class EditProductionVM
+    public  class EditProductionVM
     {
         public string Id { get; set; }
         public string FactoryId { get; set; }
-
         public string StaffId { get; set; }
         public string StaffName { get; set; }
         public string ItemId { get; set; }

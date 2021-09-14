@@ -15,11 +15,13 @@ namespace Service.BusinessServices
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IUtilService _utilService;
+
         public EquipmentCategoryService(IRepositoryWrapper repositoryWrapper,IUtilService utilService)
         {
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperEquipmentCategoryListVM> GetListPaged(GetDataListVM dataListVM)
         {
             System.Linq.Expressions.Expression<Func<EquipmentCategory, bool>> globalFilterExpression = (x) => true;
@@ -33,7 +35,6 @@ namespace Service.BusinessServices
                 x.Name.Contains(dataListVM.GlobalFilter);
             }
 
-
             var itemCatagoryList = await _repositoryWrapper.EquipmentCategory
                 .FindAll()
                 .Where(x => x.FactoryId == dataListVM.FactoryId)
@@ -46,15 +47,18 @@ namespace Service.BusinessServices
             var dataRowCount = await _repositoryWrapper.EquipmentCategory.NumOfRecord();
             List<EquipmentCategoryVM> EquipmentCategoryVMLists = new();
             EquipmentCategoryVMLists = _utilService.GetMapper().Map<List<EquipmentCategory>, List<EquipmentCategoryVM>>(itemCatagoryList);
+
             var wrapper = new WrapperEquipmentCategoryListVM()
             {
                 ListOfData = EquipmentCategoryVMLists,
                 TotalRecords = dataRowCount
             };
+
             this._utilService.LogInfo("Successful In Getting  Item Category");
 
             return wrapper;
         }
+
         public async Task<WrapperEquipmentCategoryListVM> Add(EquipmentCategoryVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<EquipmentCategoryVM, EquipmentCategory>(vm);
@@ -73,9 +77,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperEquipmentCategoryListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperEquipmentCategoryListVM> Update(string id, EquipmentCategoryVM vm)
         {
             IEnumerable<EquipmentCategory> ItemDB = await _repositoryWrapper.EquipmentCategory.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -84,7 +90,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.EquipmentCategory.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -92,9 +97,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperEquipmentCategoryListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperEquipmentCategoryListVM> Delete(EquipmentCategoryVM itemTemp)
         {
             IEnumerable<EquipmentCategory> itemTask = await _repositoryWrapper.EquipmentCategory.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -114,21 +121,9 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperEquipmentCategoryListVM data = await GetListPaged(dataParam);
             return data;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

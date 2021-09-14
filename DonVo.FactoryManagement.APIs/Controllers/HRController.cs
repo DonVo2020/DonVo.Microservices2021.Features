@@ -15,17 +15,22 @@ namespace DonVo.FactoryManagement.APIs.Controllers
     [ApiController]
     public class HRController : ControllerBase
     {
-        private readonly FactoryManagementContext _context;
-        private readonly IRepositoryWrapper _repositoryWrapper;
+        //private readonly FactoryManagementContext _context;
+        //private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IServiceWrapper _serviceWrapper;
-        private readonly ILoggerManager _logger;
+        //private readonly ILoggerManager _logger;
         private readonly IUtilService _utilService;
-        public HRController(FactoryManagementContext context, IRepositoryWrapper repositoryWrapper, IServiceWrapper serviceWrapper, ILoggerManager logger, IUtilService utilService)
+        public HRController(
+            //FactoryManagementContext context, 
+            //IRepositoryWrapper repositoryWrapper, 
+            IServiceWrapper serviceWrapper, 
+            //ILoggerManager logger, 
+            IUtilService utilService)
         {
-            _context = context;
-            _repositoryWrapper = repositoryWrapper;
+            //_context = context;
+            //_repositoryWrapper = repositoryWrapper;
             _serviceWrapper = serviceWrapper;
-            _logger = logger;
+            //_logger = logger;
             _utilService = utilService;
         }
 
@@ -44,7 +49,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperListCustomerVM>> UpdateCustomer(string id, [FromBody]CustomerVM customer)
         {
-            WrapperListCustomerVM result = new WrapperListCustomerVM();
+            WrapperListCustomerVM result = new();
             result = await _serviceWrapper.CustomerService.Update(id, customer);
             _utilService.Log("Customer Successfully Updated");
             return Ok(result);
@@ -55,7 +60,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperListCustomerVM>> AddCustomer([FromBody]CustomerVM customerVM)
         {
-            WrapperListCustomerVM result = new WrapperListCustomerVM();
+            WrapperListCustomerVM result = new();
             result = await _serviceWrapper.CustomerService.Add(customerVM);
             _utilService.Log("Customer Successfully Added");
             return Ok(result);
@@ -65,7 +70,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [Route("customer/delete")]
         public async Task<ActionResult<WrapperListCustomerVM>> DeleteCustomer([FromBody]CustomerVM customerTemp)
         {
-            WrapperListCustomerVM data = new WrapperListCustomerVM();
+            WrapperListCustomerVM data = new();
             data = await _serviceWrapper.CustomerService.Delete(customerTemp);
             _utilService.Log("Customer Successfully Deleted");
             return data;
@@ -83,13 +88,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return Ok(data);
         }
 
-
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [Route("staff/update/{id}")]
         [HttpPost]
         public async Task<ActionResult<WrapperStaffListVM>> UpdateStaff(string id, [FromBody]StaffVM temp)
         {
-            WrapperStaffListVM result = new WrapperStaffListVM();
+            WrapperStaffListVM result = new();
             result = await _serviceWrapper.StaffService.Update(id, temp);
             _utilService.Log("Staff Successfully Updated");
             return Ok(result);
@@ -100,22 +104,21 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperStaffListVM>> AddStaff([FromBody]StaffVM VM)
         {
-            WrapperStaffListVM result = new WrapperStaffListVM();
+            WrapperStaffListVM result = new();
             result = await _serviceWrapper.StaffService.Add(VM);
             _utilService.Log("Staff Successfully Added");
             return Ok(result);
         }
+
         [Route("staff/addToAdmin")]
         [HttpPost]
         public async Task<ActionResult<WrapperStaffListVM>> AddToStaff([FromBody]StaffVM VM)
         {
-            WrapperStaffListVM result = new WrapperStaffListVM();
+            WrapperStaffListVM result = new();
             result = await _serviceWrapper.StaffService.AddToIT_Admin(VM);
             _utilService.Log("Staff Successfully Added");
             return Ok(result);
         }
-
-
 
         [HttpPost]
         [Route("staff/delete")]
@@ -142,7 +145,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperSupplierListVM>> UpdateSupplier(string id, [FromBody]SupplierVM temp)
         {
-            WrapperSupplierListVM result = new WrapperSupplierListVM();
+            WrapperSupplierListVM result = new();
             result = await _serviceWrapper.SupplierService.Update(id, temp);
             _utilService.Log("Supplier Successfully Updated");
             return Ok(result);
@@ -153,7 +156,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [HttpPost]
         public async Task<ActionResult<WrapperSupplierListVM>> AddSupplier([FromBody]SupplierVM VM)
         {
-            WrapperSupplierListVM result = new WrapperSupplierListVM();
+            WrapperSupplierListVM result = new();
             result = await _serviceWrapper.SupplierService.Add(VM);
             _utilService.Log("Supplier Successfully Added");
             return Ok(result);
@@ -163,13 +166,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         [Route("supplier/delete")]
         public async Task<ActionResult<WrapperSupplierListVM>> DeleteSupplier([FromBody]SupplierVM Temp)
         {
-            WrapperSupplierListVM vb = new WrapperSupplierListVM();
+            WrapperSupplierListVM vb = new();
             vb = await _serviceWrapper.SupplierService.Delete(Temp);
             _utilService.Log("Supplier Successfully Deleted");
             return vb;
         }
 
         #endregion
-
     }
 }

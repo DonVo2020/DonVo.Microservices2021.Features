@@ -14,15 +14,14 @@ namespace Service.BusinessServices
     public class InvoiceTypeService : IInvoiceTypeService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public InvoiceTypeService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
         {
             this._repositoryWrapper = repositoryWrapper;
-
             this._utilService = utilService;
         }
+
         public async Task<WrapperInvoiceTypeListVM> GetListPaged(GetDataListVM dataListVM)
         {
             System.Linq.Expressions.Expression<Func<InvoiceType, bool>> globalFilterExpression = (x) => true;
@@ -35,7 +34,6 @@ namespace Service.BusinessServices
                 globalFilterExpression = (x) =>
                 x.Name.Contains(dataListVM.GlobalFilter);
             }
-
 
             var itemCatagoryList = await _repositoryWrapper.InvoiceType
                 .FindAll()
@@ -58,6 +56,7 @@ namespace Service.BusinessServices
 
             return wrapper;
         }
+
         public async Task<WrapperInvoiceTypeListVM> Add(InvoiceTypeVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<InvoiceTypeVM, InvoiceType>(vm);
@@ -76,6 +75,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperInvoiceTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
@@ -87,7 +87,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.InvoiceType.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -95,9 +94,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperInvoiceTypeListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperInvoiceTypeListVM> Delete(InvoiceTypeVM itemTemp)
         {
             IEnumerable<InvoiceType> itemTask = await _repositoryWrapper.InvoiceType.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -117,6 +118,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperInvoiceTypeListVM data = await GetListPaged(dataParam);
             return data;
         }

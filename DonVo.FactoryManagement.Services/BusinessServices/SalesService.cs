@@ -15,13 +15,14 @@ namespace Service.BusinessServices
     public class SalesService : ISalesService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
+
         public SalesService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
         {
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         // Invoice
         // Income
         // Receivable
@@ -100,7 +101,6 @@ namespace Service.BusinessServices
             stockOutsToAdd = _utilService.Mapper.Map<List<SalesItemVM>, List<StockOut>>(salesVM.ItemList);
             _repositoryWrapper.StockOut.CreateAll(stockOutsToAdd);
 
-
             // Transaction
             TblTransaction transactionRecieved = new();
             transactionRecieved = _utilService.Mapper.Map<SalesVM, TblTransaction>(salesVM);
@@ -108,7 +108,6 @@ namespace Service.BusinessServices
             transactionRecieved.PaymentStatus = PAYMENT_STATUS.CASH_RECIEVED.ToString();
             transactionRecieved.TransactionType = TRANSACTION_TYPE.CREDIT.ToString();
             _repositoryWrapper.Transaction.Create(transactionRecieved);
-
 
             //TblTransaction transactionReceivable = new TblTransaction();
             //transactionReceivable = _utilService.Mapper.Map<SalesVM, TblTransaction>(salesVM);
@@ -136,6 +135,7 @@ namespace Service.BusinessServices
 
             return await GetAllSalesAsync(getDatalistVM);
         }
+
         public async Task<WrapperSalesListVM> GetAllSalesAsync(GetDataListVM getDataListVM)
         {
             WrapperSalesListVM vm = new();
@@ -151,7 +151,6 @@ namespace Service.BusinessServices
                 .Skip((getDataListVM.PageNumber - 1) * (getDataListVM.PageSize))
                 .Take(getDataListVM.PageSize)
                 .ToListAsync();
-
 
             Task<List<Sales>> salesT = _repositoryWrapper
                 .Sales
@@ -171,10 +170,12 @@ namespace Service.BusinessServices
                 temp = dbListSales.Where(x => x.InvoiceId == vmList.ElementAt(i).InvoiceId).ToList();
                 vmList.ElementAt(i).ItemList = _utilService.Mapper.Map<List<Sales>, List<SalesItemVM>>(temp);
             }
+
             vm.ListOfData = vmList;
             vm.TotalRecords = invoicesT.Result.ToList().Count;
             return vm;
         }
+
         // Invoice
         // Income
         // Receivable
@@ -270,6 +271,7 @@ namespace Service.BusinessServices
 
             return await GetAllSalesAsync(getDatalistVM);
         }
+
         public async Task<WrapperSalesReturnVM> AddSalesReturn(SalesReturnVM vm)
         {
             // StockIn
@@ -342,12 +344,12 @@ namespace Service.BusinessServices
             };
             return await GetAllSalesReturn(data);
         }
+
         public async Task<WrapperSalesReturnVM> GetAllSalesReturn(GetDataListVM getDataListVM)
         {
             // Invoice
             // StockOut
             WrapperSalesReturnVM vm = new();
-
             List<SalesReturnVM> vmList = new();
 
             Task<List<Invoice>> invoicesT = _repositoryWrapper
@@ -417,6 +419,7 @@ namespace Service.BusinessServices
 
             return vm;
         }
+
         public async Task<WrapperSalesReturnVM> DeleteSalesReturn(SalesReturnVM vm)
         {
             Task<List<Invoice>> invoiceToDelete = _repositoryWrapper

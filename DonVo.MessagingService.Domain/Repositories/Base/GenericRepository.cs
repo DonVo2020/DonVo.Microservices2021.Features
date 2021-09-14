@@ -73,7 +73,6 @@ namespace DonVo.MessagingService.Domain.Repositories.Base
             mongoCollection.DeleteOne(m => m.Id == docId);
         }
 
-
         public IEnumerable<TModel> Filter(Expression<Func<TModel, bool>> filter)
         {
             return mongoCollection.Find(filter).ToList();
@@ -98,9 +97,5 @@ namespace DonVo.MessagingService.Domain.Repositories.Base
         {
             return mongoCollection.CountDocuments(filter) > 0;
         }
-
-
     }
-
-
 }

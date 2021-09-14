@@ -37,7 +37,6 @@ namespace Service.BusinessServices
                   || x.Description.Contains(dataListVM.GlobalFilter);
             }
 
-
             var EquipmentList = await _repositoryWrapper.Equipment
                 .FindAll()
                 .Where(x => x.FactoryId == dataListVM.FactoryId)
@@ -58,6 +57,7 @@ namespace Service.BusinessServices
             };
             return wrapper;
         }
+
         public async Task<WrapperEquipmentListVM> Add(EquipmentVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<EquipmentVM, Equipment>(vm);
@@ -67,7 +67,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.Equipment.SaveChangesAsync();
             this._utilService.LogInfo("Successful In saving  Equipment");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -75,9 +74,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperEquipmentListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperEquipmentListVM> Update(string id, EquipmentVM vm)
         {
             IEnumerable<Equipment> EquipmentDB = await _repositoryWrapper.Equipment.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -93,9 +94,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperEquipmentListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperEquipmentListVM> Delete(EquipmentVM EquipmentTemp)
         {
             var EquipmentTask = await _repositoryWrapper.Equipment.FindByConditionAsync(x => x.Id == EquipmentTemp.Id && x.FactoryId == EquipmentTemp.FactoryId);
@@ -116,20 +119,5 @@ namespace Service.BusinessServices
             WrapperEquipmentListVM data = await GetListPaged(dataParam);
             return data;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -14,7 +14,6 @@ namespace Service.BusinessServices
     public class StockService : IStockService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public StockService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -22,6 +21,7 @@ namespace Service.BusinessServices
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperStockListVM> Add(StockVM ViewModel)
         {
             var itemToAdd = _utilService.GetMapper().Map<StockVM, Stock>(ViewModel);
@@ -37,14 +37,16 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperStockListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperStockListVM> Update(string id, StockVM ViewModel)
         {
             if (id != ViewModel.Id)
             {
-                new WrapperStockListVM();
+                _ = new WrapperStockListVM();
             }
 
             Task<IEnumerable<Stock>> itemsDB = _repositoryWrapper.Stock.FindByConditionAsync(x => x.Id == id && x.FactoryId == ViewModel.FactoryId);
@@ -64,9 +66,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperStockListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperStockListVM> GetListPaged(GetDataListVM dataListVM)
         {
             IEnumerable<Stock> ListTask =
@@ -90,7 +94,6 @@ namespace Service.BusinessServices
                              || output.ItemStatus != null ? output.ItemStatus.Contains(dataListVM.GlobalFilter, StringComparison.OrdinalIgnoreCase) : (false
                              || output.Quantity.ToString() != null) && output.Quantity.ToString().Contains(dataListVM.GlobalFilter, StringComparison.OrdinalIgnoreCase))
                                          .ToList();
-
             }
 
             outputList = outputList.Skip((dataListVM.PageNumber - 1) * dataListVM.PageSize).Take(dataListVM.PageSize).ToList();
@@ -102,6 +105,7 @@ namespace Service.BusinessServices
             this._utilService.Log("Successful In Getting Data");
             return data;
         }
+
         public async Task<WrapperStockListVM> Delete(StockVM Temp)
         {
             var Task = await _repositoryWrapper.Stock.FindByConditionAsync(x => x.Id == Temp.Id && x.FactoryId == Temp.FactoryId);
@@ -120,9 +124,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperStockListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperStockListVM> ChangeItemStatus(StockVM ViewModel)
         {
             var dataParam6 = new GetDataListVM()
@@ -132,6 +138,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             Task<IEnumerable<Stock>> itemsDB = _repositoryWrapper.Stock.FindByConditionAsync(x => x.Id == ViewModel.Id && x.FactoryId == ViewModel.FactoryId);
             Task<WrapperStockListVM> data1 = GetListPaged(dataParam6);
             Task<IEnumerable<Stock>> stockDB = _repositoryWrapper.Stock.FindByConditionAsync(x => x.FactoryId == ViewModel.FactoryId && x.ItemStatusId == ViewModel.ItemStatusId);
@@ -162,6 +169,7 @@ namespace Service.BusinessServices
                 tempStock.Quantity += ViewModel.Quantity;
                 _repositoryWrapper.Stock.Update(tempStock);
             }
+
             await _repositoryWrapper.Stock.SaveChangesAsync();
 
             WrapperStockListVM data2 = await GetListPaged(dataParam6);

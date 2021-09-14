@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Payable
 {
@@ -13,6 +11,5 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Payable
         public string Description { get; set; }
         public string Month { get; set; }
         public DateTime CreatedDateTime { get; set; }
-
     }
 }

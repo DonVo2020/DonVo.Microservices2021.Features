@@ -20,6 +20,7 @@ namespace Service.BusinessServices
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperIncomeListVM> GetListPaged(GetDataListVM dataListVM)
         {
             //System.Linq.Expressions.Expression<Func<Income, bool>> globalFilterExpression = (x) => true;
@@ -32,7 +33,6 @@ namespace Service.BusinessServices
             //    globalFilterExpression = (x) =>
             //    x.Customer.Name.Contains(dataListVM.GlobalFilter);
             //}
-
 
             var incomeList = await _repositoryWrapper
                 .Income
@@ -71,11 +71,7 @@ namespace Service.BusinessServices
             //    .Take(dataListVM.PageSize)
             //    .ToListAsync();
 
-
             //incomeList = _utilService.ConcatList<Income>(incomeList.ToList(), _utilService.ConcatList<Income>(incomeList_1, incomeList_2));
-
-
-
 
             var dataRowCount = await _repositoryWrapper.Income.NumOfRecord();
             List<IncomeVM> IncomeVMLists = new();
@@ -108,7 +104,6 @@ namespace Service.BusinessServices
             transactionToAdd.InvoiceId = invoiceToAdd.Id;
             _repositoryWrapper.Transaction.Create(transactionToAdd);
 
-
             Task<int> t1 =  _repositoryWrapper.Income.SaveChangesAsync();
             Task<int> t2 = _repositoryWrapper.Invoice.SaveChangesAsync();
             Task<int> t3 = _repositoryWrapper.Transaction.SaveChangesAsync();
@@ -122,6 +117,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeListVM data = await GetListPaged(dataParam);
             return data;
         }
@@ -135,7 +131,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.Income.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -143,9 +138,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeListVM data = await GetListPaged(dataParam);
             return data;
-        }       
+        }   
+        
         public async Task<WrapperIncomeListVM> Delete(IncomeVM itemTemp)
         {
             Task<IEnumerable<Income>> incomeTask =  _repositoryWrapper.Income.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -158,7 +155,6 @@ namespace Service.BusinessServices
             var transactionToDelete = transactionTask.Result.ToList().FirstOrDefault();
             var invoiceToDelete = invoiceTask.Result.ToList().FirstOrDefault();
 
-
             //if (item == null)
             //{
             //    return new WrapperIncomeListVM();
@@ -167,11 +163,9 @@ namespace Service.BusinessServices
             _repositoryWrapper.Transaction.Delete(transactionToDelete);
             _repositoryWrapper.Invoice.Delete(invoiceToDelete);
 
-
             await _repositoryWrapper.Income.SaveChangesAsync();
             await _repositoryWrapper.Transaction.SaveChangesAsync();
             await _repositoryWrapper.Invoice.SaveChangesAsync();
-
 
             var dataParam = new GetDataListVM()
             {
@@ -180,9 +174,9 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperIncomeListVM data = await GetListPaged(dataParam);
             return data;
         }
-
     }
 }

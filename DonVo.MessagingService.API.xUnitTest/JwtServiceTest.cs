@@ -8,7 +8,6 @@ namespace DonVo.MessagingService.API.xUnitTest
 {
     public class JwtServiceTest
     {
-
         private readonly JwtService jwtService;
 
         public JwtServiceTest()
@@ -25,7 +24,6 @@ namespace DonVo.MessagingService.API.xUnitTest
             jwtService = new JwtService(configuration);
         }
 
-
         [Fact]
         public void CreateToken_Succesfull()
         {
@@ -33,7 +31,6 @@ namespace DonVo.MessagingService.API.xUnitTest
             var result = jwtService.CreateToken(claims);
             Assert.NotNull(result);
             Assert.Equal(3, result.Split('.').Length);
-
         }
 
         [Fact]
@@ -42,7 +39,5 @@ namespace DonVo.MessagingService.API.xUnitTest
             Dictionary<string, string> claims = null;
             Assert.Throws<System.ArgumentNullException>(() => jwtService.CreateToken(claims));
         }
-
-
     }
 }

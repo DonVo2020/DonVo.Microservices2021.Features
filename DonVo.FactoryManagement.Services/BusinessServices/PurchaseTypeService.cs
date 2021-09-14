@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class PurchaseTypeService : IPurchaseTypeService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public PurchaseTypeService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)

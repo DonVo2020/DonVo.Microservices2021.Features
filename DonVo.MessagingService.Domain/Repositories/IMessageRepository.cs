@@ -10,5 +10,4 @@ namespace DonVo.MessagingService.Domain.Repositories
         List<string> GetOlderMessages(string id, string username);
         string GetLatestMessage(string senderUsername, string receiverUsername);
     }
-
 }

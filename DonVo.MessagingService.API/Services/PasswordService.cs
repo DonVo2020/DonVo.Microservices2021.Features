@@ -11,7 +11,6 @@ namespace DonVo.MessagingService.API.Services
         /// </summary>
         byte[] GenerateSalt();
 
-
         /// <summary>
         /// Derives a 256-bit subkey usin HMACSHA256
         /// </summary>
@@ -19,6 +18,7 @@ namespace DonVo.MessagingService.API.Services
         /// <param name="salt">salt to hashing plain text</param>
         string HashText(string plainText, byte[] salt);
     }
+
     public class PasswordService : IPasswordService
     {
         public byte[] GenerateSalt()

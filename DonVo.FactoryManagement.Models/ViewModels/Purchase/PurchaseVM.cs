@@ -1,17 +1,14 @@
-﻿using DonVo.FactoryManagement.Models.DbModels;
-using DonVo.FactoryManagement.Models.ViewModels.ExpenseType;
+﻿using DonVo.FactoryManagement.Models.ViewModels.ExpenseType;
 using DonVo.FactoryManagement.Models.ViewModels.InvoiceType;
 using DonVo.FactoryManagement.Models.ViewModels.Supplier;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
 {
-   public class PurchaseVM
+    public class PurchaseVM
     {
         public SupplierVM SupplierVM { get; set; }
-
         public InvoiceTypeVM InvoiceType { get; set; }
         public ExpenseTypeVM ExpenseType { get; set; }
         public DateTime OcurranceDate { get; set; }
@@ -20,7 +17,6 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
         public long DueAmount { get; set; }
         public long DiscountAmount { get; set; }
         public List<PurchaseItemVM> ItemList { get; set; }
-
         public string EmployeeId { get; set; }
         public string FactoryId { get; set; }
         public string SupplierName { get; set; }

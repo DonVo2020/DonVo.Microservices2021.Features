@@ -10,7 +10,6 @@ namespace Service
 {
     public class UtilService : IUtilService
     {
-
         private readonly FactoryManagementContext _context;
         private readonly ILoggerManager _loggerManager;
         private readonly IMapper _mapper;
@@ -21,10 +20,11 @@ namespace Service
             _loggerManager = loggerManager;
             _mapper = mapper;
         }
+
         public async Task<string> GetUniqueId(string TableName)
         {
-            long rowCount = 0;
-            string output = "";
+            long rowCount;
+            string output;
 
             switch (TableName)
             {

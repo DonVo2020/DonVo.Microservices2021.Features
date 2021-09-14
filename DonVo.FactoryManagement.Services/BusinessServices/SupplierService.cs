@@ -16,7 +16,6 @@ namespace Service.BusinessServices
     public class SupplierService : ISupplierService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public SupplierService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -41,14 +40,16 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperSupplierListVM data = await GetListPaged(dataParam, true);
             return data;
         }
+
         public async Task<WrapperSupplierListVM> Update(string id, SupplierVM ViewModel)
         {
             if (id != ViewModel.Id)
             {
-                new WrapperSupplierListVM();
+                _ = new WrapperSupplierListVM();
             }
 
             Task<IEnumerable<Supplier>> itemsDB = _repositoryWrapper.Supplier.FindByConditionAsync(x => x.Id == id && x.FactoryId == ViewModel.FactoryId);
@@ -68,9 +69,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperSupplierListVM data = await GetListPaged(dataParam, true);
             return data;
         }
+
         public async Task<WrapperSupplierListVM> GetListPaged(GetDataListVM dataListVM, bool withHistory)
         {
             IEnumerable<Supplier> ListTask = await _repositoryWrapper.Supplier.FindByConditionAsync(x => x.FactoryId == dataListVM.FactoryId);
@@ -105,9 +108,9 @@ namespace Service.BusinessServices
                 data = await SetHistoryOverview(data, dataListVM.FactoryId);
             }
 
-
             return data;
         }
+
         public async Task<WrapperSupplierListVM> Delete(SupplierVM Temp)
         {
             var Task = await _repositoryWrapper.Supplier.FindByConditionAsync(x => x.Id == Temp.Id && x.FactoryId == Temp.FactoryId);
@@ -126,6 +129,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperSupplierListVM data = await GetListPaged(dataParam, true);
             return data;
         }
@@ -148,13 +152,17 @@ namespace Service.BusinessServices
                        .Skip((vm.PageNumber - 1) * vm.PageSize)
                        .Take(vm.PageSize)
                        .ToListAsync();
+
             await paymentInvoiceListT;
+
             WrapperPaymentListVM wrapperPaymentListVM = new()
             {
                 ListOfData = _utilService.Mapper.Map<List<Invoice>, List<PaymentVM>>(paymentInvoiceListT.Result.ToList())
             };
+
             return wrapperPaymentListVM;
         }
+
         public async Task<WrapperPaymentListVM> DeleteSupplierPayment(PaymentVM vm)
         {
             Task<List<Invoice>> paymentInvoiceListT = _repositoryWrapper
@@ -188,7 +196,6 @@ namespace Service.BusinessServices
 
             await Task.WhenAll(paymentInvoiceListT, paymentExpenseListT, paymentTransactionListT);
 
-
             _repositoryWrapper.Transaction.Delete(paymentTransactionListT.Result.FirstOrDefault());
             _repositoryWrapper.Invoice.Delete(paymentInvoiceListT.Result.FirstOrDefault());
             _repositoryWrapper.Expense.Delete(paymentExpenseListT.Result.FirstOrDefault());
@@ -208,8 +215,8 @@ namespace Service.BusinessServices
             };
 
             return await GetSupplierPaymentList(item);
-
         }
+
         public async Task<WrapperPaymentListVM> PayToSupplier(PaymentVM paymentVM)
         {
             Invoice invoiceToAdd = new();
@@ -244,14 +251,12 @@ namespace Service.BusinessServices
             };
 
             return await GetSupplierPaymentList(item);
-
         }
         #endregion
 
         #region Supplier
         public async Task<WrapperSupplierHistory> GetSupplierHistory(GetDataListHistory supplierVM)
         {
-
             WrapperSupplierHistory custHist = new();
             WrapperSupplierHistory returnCustHist = new();
             // Purchase -- Sales Invoice Generated
@@ -320,11 +325,8 @@ namespace Service.BusinessServices
             List<SupplierHistory> custHistExpense = _utilService.Mapper.Map<List<Expense>, List<SupplierHistory>>(listExpenseT.Result.ToList());
             List<SupplierHistory> custHistPurchase = _utilService.Mapper.Map<List<Purchase>, List<SupplierHistory>>(listPurchaseT.Result.ToList());
             List<SupplierHistory> custHistIncome = _utilService.Mapper.Map<List<Income>, List<SupplierHistory>>(listIncomeT.Result.ToList());
-
-
             List<SupplierHistory> custHistPayable = _utilService.Mapper.Map<List<Payable>, List<SupplierHistory>>(listPayableT.Result.ToList());
             List<SupplierHistory> custHistReceivable = _utilService.Mapper.Map<List<Receivable>, List<SupplierHistory>>(listReceivableT.Result.ToList());
-
 
             custHist.ListOfData.AddRange(custHistInvoice);
             custHist.ListOfData.AddRange(custHistExpense);
@@ -333,6 +335,7 @@ namespace Service.BusinessServices
             custHist.ListOfData.AddRange(custHistPayable);
             custHist.ListOfData.AddRange(custHistReceivable);
             custHist.ListOfData.OrderByDescending(x => x.OccurranceDate);
+
             for (int i = 0; i < custHist.ListOfData.Count; i++)
             {
                 IEnumerable<SupplierHistory> tempList = new List<SupplierHistory>();
@@ -358,9 +361,11 @@ namespace Service.BusinessServices
                         .Take(supplierVM.PageSize)
                         .ToList();
             }
+
             returnCustHist.ListOfData.Add(staffHist);
             return returnCustHist;
         }
+
         public SupplierHistory GetSupplierHistoryOverview(WrapperSupplierHistory list)
         {
             SupplierHistory history = new();
@@ -395,6 +400,7 @@ namespace Service.BusinessServices
             }
             return history;
         }
+
         private async Task<WrapperSupplierListVM> SetHistoryOverview(WrapperSupplierListVM vm, string FactoryId)
         {
             var data = new GetDataListHistory();

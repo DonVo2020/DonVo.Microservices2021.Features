@@ -22,26 +22,28 @@ namespace DonVo.FactoryManagement.APIs.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly FactoryManagementContext _context;
+        //private readonly FactoryManagementContext _context;
         private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IServiceWrapper _serviceWrapper;
-        private readonly ILoggerManager _logger;
+        //private readonly ILoggerManager _logger;
         private readonly IUtilService _utilService;
-        private readonly IBusinessService _businessService;
+        //private readonly IBusinessService _businessService;
+
         public AuthController(
-            FactoryManagementContext context,
+            //FactoryManagementContext context,
             IRepositoryWrapper repositoryWrapper,
             IServiceWrapper serviceWrapper,
-            ILoggerManager logger,
-            IUtilService utilService,
-            IBusinessService businessService)
+            //ILoggerManager logger,
+            IUtilService utilService
+            //IBusinessService businessService
+            )
         {
-            _context = context;
+            //_context = context;
             _repositoryWrapper = repositoryWrapper;
             _serviceWrapper = serviceWrapper;
-            _logger = logger;
+            //_logger = logger;
             _utilService = utilService;
-            _businessService = businessService;
+            //_businessService = businessService;
         }
 
         #region Role
@@ -70,7 +72,6 @@ namespace DonVo.FactoryManagement.APIs.Controllers
 
             RoleVM roleVM = _utilService.Mapper.Map<Role, RoleVM>(roleList.FirstOrDefault().Role);
             return roleVM;
-
         }
 
         [Route("Role/update/{id}")]
@@ -80,14 +81,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.RoleService.Update(id, Role);
         }
 
-
         [HttpPost]
         [Route("Role/add")]
         public async Task<ActionResult<WrapperRoleListVM>> AddRole([FromBody]RoleVM Role)
         {
             return await _serviceWrapper.RoleService.Add(Role);
         }
-
 
         [HttpPost]
         [Route("Role/delete")]
@@ -96,6 +95,7 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.RoleService.Delete(itemVM);
         }
         #endregion
+
         #region UserAuthInfo
 
         [HttpPost]
@@ -128,14 +128,12 @@ namespace DonVo.FactoryManagement.APIs.Controllers
             return await _serviceWrapper.UserAuthInfoService.Update(id, UserAuthInfo);
         }
 
-
         [HttpPost]
         [Route("UserAuthInfo/add")]
         public async Task<ActionResult<WrapperUserAuthInfoListVM>> AddUserAuthInfo([FromBody]UserAuthInfoVM UserAuthInfo)
         {
             return await _serviceWrapper.UserAuthInfoService.Add(UserAuthInfo);
         }
-
 
         [HttpPost]
         [Route("UserAuthInfo/delete")]
@@ -162,10 +160,10 @@ namespace DonVo.FactoryManagement.APIs.Controllers
         public ActionResult<bool> IsUserNameExist([FromBody]LoginVM user)
         {
             return _serviceWrapper.UserAuthInfoService.IsUserExist(user);
-
         }
+
         [HttpGet("gettoken")]
-        public Object GetToken()
+        public object GetToken()
         {
             string key = "my_secret_key_12345"; //Secret key which will be used later during validation    
             var issuer = "http://mysite.com";  //normally this will be your site URL    

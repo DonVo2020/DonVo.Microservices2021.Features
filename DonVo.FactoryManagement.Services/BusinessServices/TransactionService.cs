@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class TransactionService : ITransactionService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public TransactionService(IRepositoryWrapper repositoryWrapper,  IUtilService utilService)

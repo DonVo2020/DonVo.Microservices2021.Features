@@ -1,11 +1,8 @@
-﻿using DonVo.FactoryManagement.Models.ViewModels.Receivable;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Payable
 {
-   public class WrapperMonthPayableListVM
+    public class WrapperMonthPayableListVM
     {
         public WrapperMonthPayableListVM()
         {

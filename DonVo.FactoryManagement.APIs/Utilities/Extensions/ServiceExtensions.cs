@@ -92,19 +92,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Extensions
             services.AddTransient<IApiResourceMappingService, ApiResourceMappingService>();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             //services.AddScoped<IAddressService, AddressService>();
             //services.AddScoped<ICustomerService, CustomerService>();
             //services.AddScoped<IDepartmentService, DepartmentService>();
@@ -142,8 +129,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Extensions
         }
         public static void ConfigureRepository(this IServiceCollection services)
         {
-
-
             services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
@@ -226,7 +211,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Extensions
             //services.AddScoped<IBusinessWrapperService, BusinessWrapperService>();
             //services.AddScoped<IBusinessService, BusinessServices>();
 
-
             services.AddTransient<IServiceWrapper, ServiceWrapper>();
             services.AddTransient<IPurchaseWrapperService, PurchaseWrapperService>();
             services.AddTransient<IBusinessWrapperService, BusinessWrapperService>();
@@ -272,15 +256,7 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Extensions
                     }
                 });
             });
-
         }
-
-
-
-
-
-
-
 
         public static void ConfigureJwtAuth(this IServiceCollection services)
         {
@@ -290,36 +266,32 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Extensions
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-
-            ValidIssuer = "http://localhost:63048",
-            ValidAudience = "http://localhost:4200",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
-        };
-        options.Events = new JwtBearerEvents
-        {
-            OnAuthenticationFailed = context =>
+            .AddJwtBearer(options =>
             {
-                if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    context.Response.Headers.Add("Token-Expired", "true");
-                }
-                return Task.CompletedTask;
-            }
-        };
-    });
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
 
+                    ValidIssuer = "http://localhost:63048",
+                    ValidAudience = "http://localhost:4200",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                        {
+                            context.Response.Headers.Add("Token-Expired", "true");
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+            });
         }
-
-
-
     }
     public static class MiddlewareExtension
     {

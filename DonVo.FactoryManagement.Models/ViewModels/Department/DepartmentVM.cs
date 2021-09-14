@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.Department
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.Department
 {
     public class DepartmentVM
     {

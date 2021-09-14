@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Supplier
 {
-  public  class SupplierHistory
+    public  class SupplierHistory
     {
-
         public string Purpose { get; set; }
         public string CustomerId { get; set; }
         public string InvoiceId { get; set; }

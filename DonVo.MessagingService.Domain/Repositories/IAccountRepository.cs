@@ -9,5 +9,4 @@ namespace DonVo.MessagingService.Domain.Repositories
         void UpdateLastLogin(string userId);
         bool IsBlocked(string userId, string opponent);
     }
-
 }

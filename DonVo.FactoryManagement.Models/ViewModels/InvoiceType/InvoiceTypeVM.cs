@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.InvoiceType
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.InvoiceType
 {
     public class InvoiceTypeVM
     {

@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class InvoiceService : IInvoiceService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public InvoiceService(IRepositoryWrapper repositoryWrapper,  IUtilService utilService)

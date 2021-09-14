@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.Enums
+﻿namespace DonVo.FactoryManagement.Models.Enums
 {
-   public enum TRANSACTION_TYPE
+    public enum TRANSACTION_TYPE
     {
         DEBIT,
         CREDIT,

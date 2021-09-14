@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.CustomerView
 {
-   public class CustomerHistory
+    public class CustomerHistory
     {
         public string CustomerId { get; set; }
         public string InvoiceId { get; set; }
@@ -18,12 +16,9 @@ namespace DonVo.FactoryManagement.Models.ViewModels.CustomerView
         public long RecievedAmount { get; set; }
         public long PayableAmount { get; set; }
         public long ReceivableAmount { get; set; }
-
         public string Purpose { get; set; }
-
         public long InvoiceTotalAfterDiscount { get; set; }
         public DateTime OccurranceDate { get; set; }
         public string Type { get; set; }
-
     }
 }

@@ -54,7 +54,6 @@ namespace Service.BusinessServiceWrapper
             List<MonthlyProduction> monthlyProductions = new();
             monthlyProductions = _utilService.Mapper.Map<List<Production>, List<MonthlyProduction>>(prodT.Result.ToList());
 
-
             returnData.TotalRecords = monthlyProductions.ToList().Count;
             returnData.ListOfData = monthlyProductions;
             MonthlyProduction lastRow = new()
@@ -76,6 +75,7 @@ namespace Service.BusinessServiceWrapper
 
             return returnData;
         }
+
         public async Task<WrapperMonthPayableListVM> MonthlyPayable(MonthlyReport vm)
         {
             vm.To = vm.To.ToLocalTime();
@@ -138,6 +138,7 @@ namespace Service.BusinessServiceWrapper
 
             return returnData;
         }
+
         public async Task<WrapperMonthReceivableVM> MonthlyReceivable(MonthlyReport vm)
         {
             vm.To = vm.To.ToLocalTime();
@@ -184,7 +185,6 @@ namespace Service.BusinessServiceWrapper
             monthlyReceivable = _utilService.Mapper.Map<List<Receivable>, List<MonthlyReceivable>>(lst);
 
             returnData.TotalRecords = monthlyReceivable
-
                 .ToList()
                 .Count;
 
@@ -197,16 +197,15 @@ namespace Service.BusinessServiceWrapper
                 .OrderByDescending(x => x.CreatedDateTime)
                 .Skip((vm.PageNumber - 1) * (vm.PageSize))
                 .Take(vm.PageSize)
-
                 .ToList();
 
             returnData.Total_TillNow = lastRow.Amount;
             returnData.Total_Monthly = returnData.ListOfData.Sum(x => (x.Amount));
-
             returnData.ListOfData.Add(lastRow);
 
             return returnData;
         }
+
         public async Task<WrapperMonthIncomeVM> MonthlyIncome(MonthlyReport vm)
         {
             vm.To = vm.To.ToLocalTime();
@@ -260,7 +259,6 @@ namespace Service.BusinessServiceWrapper
                 .OrderByDescending(x => x.CreatedDateTime)
                 .Skip((vm.PageNumber - 1) * (vm.PageSize))
                 .Take(vm.PageSize)
-
                 .ToList();
 
             returnData.Total_TillNow = lastRow.Amount;
@@ -269,6 +267,7 @@ namespace Service.BusinessServiceWrapper
 
             return returnData;
         }
+
         public async Task<WrapperMonthExpenseVM> MonthlyExpense(MonthlyReport vm)
         {
             vm.To = vm.To.ToLocalTime();
@@ -321,7 +320,6 @@ namespace Service.BusinessServiceWrapper
             monthlyExpense = _utilService.Mapper.Map<List<Expense>, List<MonthlyExpense>>(lst);
 
             returnData.TotalRecords = monthlyExpense
-
                 .ToList()
                 .Count;
 
@@ -333,7 +331,6 @@ namespace Service.BusinessServiceWrapper
                 .OrderByDescending(x => x.CreatedDateTime)
                 .Skip((vm.PageNumber - 1) * (vm.PageSize))
                 .Take(vm.PageSize)
-
                 .ToList();
 
             returnData.Total_TillNow = lastRow.Amount;
@@ -342,6 +339,7 @@ namespace Service.BusinessServiceWrapper
 
             return returnData;
         }
+
         public async Task<WrapperMonthTransactionVM> MonthlyTransaction(MonthlyReport vm)
         {
             vm.To = vm.To.ToLocalTime();
@@ -396,11 +394,9 @@ namespace Service.BusinessServiceWrapper
             returnData.TotalTillNow_Debit = returnData.ListOfData.Where(x => x.TransactionType == TRANSACTION_TYPE.DEBIT.ToString()).Sum(x => x.Amount);
 
             returnData.ListOfData = monthlyExpense
-
                  .OrderByDescending(x => x.CreatedDateTime)
                  .Skip((vm.PageNumber - 1) * (vm.PageSize))
                 .Take(vm.PageSize)
-
                 .ToList();
 
             returnData.TotalMonthly_Credit = returnData.ListOfData.Where(x => x.TransactionType == TRANSACTION_TYPE.CREDIT.ToString()).Sum(x => x.Amount);

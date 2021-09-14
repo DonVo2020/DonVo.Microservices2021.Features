@@ -23,7 +23,6 @@ namespace DonVo.DonVo.MessagingService.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -32,7 +31,7 @@ namespace DonVo.DonVo.MessagingService.API
                 var filePath = System.IO.Path.Combine(System.AppContext.BaseDirectory, "DonVo.MessagingService.API.xml");
                 c.IncludeXmlComments(filePath);
             });
-            ;
+            
             services.AddScoped<IMongoClient>(x => new MongoClient(connectionString: Configuration.GetConnectionString("MongoDB")));
 
             services.AddScoped<IAccountRepository, AccountRepository>();

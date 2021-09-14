@@ -14,7 +14,6 @@ namespace Service.BusinessServices
     public class ProductionService : IProductionService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public ProductionService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -22,6 +21,7 @@ namespace Service.BusinessServices
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperProductionListVM> GetListPaged(GetDataListVM dataListVM)
         {
             var dataList = await _repositoryWrapper.Production
@@ -62,8 +62,6 @@ namespace Service.BusinessServices
                     .ToList();
             }
 
-
-
             var wrapper = new WrapperProductionListVM()
             {
                 ListOfData = ProductionVMLists,
@@ -80,7 +78,6 @@ namespace Service.BusinessServices
         // Production
         public async Task<WrapperProductionListVM> AddProductions(List<AddProductionVM> vmList)
         {
-
             for (int i = 0; i < vmList.Count; i++)
             {
                 await AddSingleProduction(vmList.ElementAt(i));
@@ -94,9 +91,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperProductionListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         private async Task AddSingleProduction(AddProductionVM vm)
         {
             var productionToAdd = _utilService.GetMapper().Map<AddProductionVM, Production>(vm);
@@ -124,7 +123,7 @@ namespace Service.BusinessServices
             IEnumerable<Stock> stockList = await _repositoryWrapper
                 .Stock
                 .FindByConditionAsync
-                (x => x.FactoryId == vm.FactoryId 
+                (x => x.FactoryId == vm.FactoryId
                 && x.ItemId == vm.ItemId
                 && x.ItemStatusId == vm.ItemStatusId);
 
@@ -149,8 +148,9 @@ namespace Service.BusinessServices
             Task<int> stockToAddT = _repositoryWrapper.Stock.SaveChangesAsync();
             Task<int> incoiceToAddT = _repositoryWrapper.Invoice.SaveChangesAsync();
 
-            await Task.WhenAll(productionToAddT, stockInToAddT, payableToAddT, stockToAddT, incoiceToAddT);         
+            await Task.WhenAll(productionToAddT, stockInToAddT, payableToAddT, stockToAddT, incoiceToAddT);
         }
+
         public async Task<WrapperProductionListVM> Add(AddProductionVM vm)
         {
             var productionToAdd = _utilService.GetMapper().Map<AddProductionVM, Production>(vm);
@@ -170,7 +170,6 @@ namespace Service.BusinessServices
             productionToAdd = _repositoryWrapper.Production.Create(productionToAdd);
             stockInToAdd.ProductionId = productionToAdd.Id;
             payableToAdd.ProductionId = productionToAdd.Id;
-
 
             stockInToAdd = _repositoryWrapper.StockIn.Create(stockInToAdd);
             payableToAdd = _repositoryWrapper.Payable.Create(payableToAdd);
@@ -208,9 +207,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperProductionListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         // not yet used
         public async Task<WrapperProductionListVM> Update(string id, EditProductionVM vm)
         {
@@ -220,7 +221,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.Production.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Production");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -228,6 +228,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperProductionListVM data = await GetListPaged(dataParam);
             return data;
         }
@@ -258,11 +259,9 @@ namespace Service.BusinessServices
             _repositoryWrapper.Invoice.Delete(invoiceT.Result.ToList().FirstOrDefault());
             Stock existingStock = stockT.Result.ToList().FirstOrDefault();
 
-
-            if (existingStock == null) { 
-            
+            if (existingStock == null)
+            {
             }
-
             else
             {
                 if (existingStock.Quantity < itemTemp.Quantity)
@@ -301,6 +300,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperProductionListVM data = await GetListPaged(dataParam);
             return data;
         }

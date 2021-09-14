@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Production
 {
-   public class AddProductionVM
+    public class AddProductionVM
     {
         public string Id { get; set; }
         public string FactoryId { get; set; }
-
         public string InvoiceTypeId { get; set; }
         public string InvoiceId { get; set; }
         public string ExecutorId { get; set; }

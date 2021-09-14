@@ -14,17 +14,13 @@ namespace Service.BusinessServices
     public class PaymentStatusService : IPaymentStatusService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public PaymentStatusService(IRepositoryWrapper repositoryWrapper,  IUtilService utilService)
         {
             this._repositoryWrapper = repositoryWrapper;
-
             this._utilService = utilService;
-
         }
-
 
         public async Task<WrapperPaymentStatusListVM> GetListPaged(GetDataListVM dataListVM)
         {
@@ -38,6 +34,7 @@ namespace Service.BusinessServices
                 globalFilterExpression = (x) =>
                 x.Status.Contains(dataListVM.GlobalFilter);
             }
+
             var paymentStatusList = await _repositoryWrapper.PaymentStatus
                 .FindAll()
                 .Where(x => x.FactoryId == dataListVM.FactoryId)
@@ -57,6 +54,7 @@ namespace Service.BusinessServices
             };
             return wrapper;
         }
+
         public async Task<WrapperPaymentStatusListVM> Add(PaymentStatusVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<PaymentStatusVM, PaymentStatus>(vm);
@@ -75,9 +73,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperPaymentStatusListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperPaymentStatusListVM> Update(string id, PaymentStatusVM vm)
         {
             IEnumerable<PaymentStatus> ItemDB = await _repositoryWrapper.PaymentStatus.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -86,7 +86,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.PaymentStatus.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -94,9 +93,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperPaymentStatusListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperPaymentStatusListVM> Delete(PaymentStatusVM itemTemp)
         {
             IEnumerable<PaymentStatus> itemTask = await _repositoryWrapper.PaymentStatus.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -119,6 +120,5 @@ namespace Service.BusinessServices
             WrapperPaymentStatusListVM data = await GetListPaged(dataParam);
             return data;
         }
-
     }
 }

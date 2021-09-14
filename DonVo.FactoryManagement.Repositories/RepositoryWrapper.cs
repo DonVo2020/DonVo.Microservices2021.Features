@@ -139,6 +139,7 @@ namespace DonVo.FactoryManagement.Repositories
                 return _ApiResourceMappingRepository;
             }
         }
+
         public IAddressRepository Address
         {
             get
@@ -151,12 +152,11 @@ namespace DonVo.FactoryManagement.Repositories
                 return _Address;
             }
         }
+
         public ICustomerRepository Customer
         {
-
             get
             {
-
                 if (_Customer == null)
                 {
                     //return new CustomerRepository(dbContext,_util);
@@ -164,13 +164,11 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Customer;
-
             }
-
         }
+
         public IDepartmentRepository Department
         {
-
             get
             {
 
@@ -181,16 +179,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Department;
-
             }
-
         }
+
         public IEquipmentRepository Equipment
         {
-
             get
             {
-
                 if (_Equipment == null)
                 {
                     //return new EquipmentRepository(dbContext,_util);
@@ -198,13 +193,11 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Equipment;
-
             }
-
         }
+
         public IEquipmentCategoryRepository EquipmentCategory
         {
-
             get
             {
 
@@ -215,16 +208,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _EquipmentCategory;
-
             }
-
         }
+
         public IExpenseRepository Expense
         {
-
             get
             {
-
                 if (_Expense == null)
                 {
                     //return new ExpenseRepository(dbContext,_util);
@@ -232,16 +222,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Expense;
-
             }
-
         }
+
         public IExpenseTypeRepository ExpenseType
         {
-
             get
             {
-
                 if (_ExpenseType == null)
                 {
                     //return new ExpenseTypeRepository(dbContext,_util);
@@ -249,16 +236,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _ExpenseType;
-
             }
-
         }
+
         public IFactoryRepository Factory
         {
-
             get
             {
-
                 if (_Factory == null)
                 {
                     //return new FactoryRepository(dbContext,_util);
@@ -266,16 +250,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Factory;
-
             }
-
         }
+
         public IIncomeRepository Income
         {
-
             get
             {
-
                 if (_Income == null)
                 {
                     //return new IncomeTypeRepository(dbContext,_util);
@@ -283,16 +264,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Income;
-
             }
-
         }
+
         public IIncomeTypeRepository IncomeType
         {
-
             get
             {
-
                 if (_IncomeType == null)
                 {
                     //return new IncomeTypeRepository(dbContext,_util);
@@ -300,16 +278,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _IncomeType;
-
             }
-
         }
+
         public IInvoiceRepository Invoice
         {
-
             get
             {
-
                 if (_Invoice == null)
                 {
                     //return new InvoiceRepository(dbContext,_util);
@@ -317,16 +292,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Invoice;
-
             }
-
         }
+
         public IInvoiceTypeRepository InvoiceType
         {
-
             get
             {
-
                 if (_InvoiceType == null)
                 {
                     //return new InvoiceTypeRepository(dbContext,_util);
@@ -334,16 +306,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _InvoiceType;
-
             }
-
         }
+
         public IItemRepository Item
         {
-
             get
             {
-
                 if (_Item == null)
                 {
                     //return new ItemRepository(dbContext,_util);
@@ -351,16 +320,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Item;
-
             }
-
         }
+
         public IItemCategoryRepository ItemCategory
         {
-
             get
             {
-
                 if (_ItemCategory == null)
                 {
                     //return new ItemCategoryRepository(dbContext,_util);
@@ -368,16 +334,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _ItemCategory;
-
             }
-
         }
+
         public IItemStatusRepository ItemStatus
         {
-
             get
             {
-
                 if (_ItemStatus == null)
                 {
                     //return new ItemStatusRepository(dbContext,_util);
@@ -385,16 +348,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _ItemStatus;
-
             }
-
         }
+
         public IPayableRepository Payable
         {
-
             get
             {
-
                 if (_Payable == null)
                 {
                     //return new PayableRepository(dbContext,_util);
@@ -402,16 +362,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Payable;
-
             }
-
         }
+
         public IPaymentStatusRepository PaymentStatus
         {
-
             get
             {
-
                 if (_PaymentStatus == null)
                 {
                     //return new PaymentStatusRepository(dbContext,_util);
@@ -419,16 +376,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _PaymentStatus;
-
             }
-
         }
+
         public IPhoneRepository Phone
         {
-
             get
             {
-
                 if (_Phone == null)
                 {
                     //return new PhoneRepository(dbContext,_util);
@@ -436,16 +390,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Phone;
-
             }
-
         }
+
         public IProductionRepository Production
         {
-
             get
             {
-
                 if (_Production == null)
                 {
                     //return new ProductionRepository(dbContext,_util);
@@ -453,16 +404,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Production;
-
             }
-
         }
+
         public IPurchaseRepository Purchase
         {
-
             get
             {
-
                 if (_Purchase == null)
                 {
                     //return new PurchaseRepository(dbContext,_util);
@@ -470,16 +418,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Purchase;
-
             }
-
         }
+
         public IPurchaseTypeRepository PurchaseType
         {
-
             get
             {
-
                 if (_PurchaseType == null)
                 {
                     //return new PurchaseTypeRepository(dbContext,_util);
@@ -487,16 +432,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _PurchaseType;
-
             }
-
         }
+
         public IReceivableRepository Receivable
         {
-
             get
             {
-
                 if (_Receivable == null)
                 {
                     //return new ReceivableRepository(dbContext,_util);
@@ -504,16 +446,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Receivable;
-
             }
-
         }
+
         public IRoleRepository Role
         {
-
             get
             {
-
                 if (_Role == null)
                 {
                     //return new RoleRepository(dbContext,_util);
@@ -521,16 +460,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Role;
-
             }
-
         }
+
         public ISalesRepository Sales
         {
-
             get
             {
-
                 if (_Sales == null)
                 {
                     //return new SalesRepository(dbContext,_util);
@@ -538,16 +474,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Sales;
-
             }
-
         }
+
         public IStaffRepository Staff
         {
-
             get
             {
-
                 if (_Staff == null)
                 {
                     //return new StaffRepository(dbContext,_util);
@@ -555,16 +488,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Staff;
-
             }
-
         }
+
         public IStockRepository Stock
         {
-
             get
             {
-
                 if (_Stock == null)
                 {
                     //return new StockRepository(dbContext,_util);
@@ -572,16 +502,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Stock;
-
             }
-
         }
+
         public IStockInRepository StockIn
         {
-
             get
             {
-
                 if (_StockIn == null)
                 {
                     //return new StockInRepository(dbContext,_util);
@@ -589,16 +516,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _StockIn;
-
             }
-
         }
+
         public IStockOutRepository StockOut
         {
-
             get
             {
-
                 if (_StockOut == null)
                 {
                     //return new StockOutRepository(dbContext,_util);
@@ -606,16 +530,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _StockOut;
-
             }
-
         }
+
         public ISupplierRepository Supplier
         {
-
             get
             {
-
                 if (_Supplier == null)
                 {
                     //return new SupplierRepository(dbContext,_util);
@@ -623,16 +544,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Supplier;
-
             }
-
         }
+
         public ITransactionRepository Transaction
         {
-
             get
             {
-
                 if (_Transaction == null)
                 {
                     //return new TransactionRepository(dbContext,_util);
@@ -640,16 +558,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _Transaction;
-
             }
-
         }
+
         public ITransactionTypeRepository TransactionType
         {
-
             get
             {
-
                 if (_TransactionType == null)
                 {
                     //return new TransactionTypeRepository(dbContext,_util);
@@ -657,16 +572,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _TransactionType;
-
             }
-
         }
+
         public IUserAuthInfoRepository UserAuthInfo
         {
-
             get
             {
-
                 if (_UserAuthInfo == null)
                 {
                     //return new UserAuthInfoRepository(dbContext,_util);
@@ -674,16 +586,13 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _UserAuthInfo;
-
             }
-
         }
+
         public IUserRoleRepository UserRole
         {
-
             get
             {
-
                 if (_UserRole == null)
                 {
                     //return new UserRoleRepository(dbContext,_util);
@@ -691,10 +600,9 @@ namespace DonVo.FactoryManagement.Repositories
                 }
 
                 return _UserRole;
-
             }
-
         }
+
         public void Save()
         {
             dbContext.SaveChanges();

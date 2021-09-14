@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Income
 {
@@ -20,6 +18,5 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Income
         public string EmployeeId { get; set; }
         public DateTime OccurranceDate { get; set; }
         public string Purpose { get; set; } // 
-
     }
 }

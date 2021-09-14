@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.Enums
+﻿namespace DonVo.FactoryManagement.Models.Enums
 {
     public enum TransactionPurpose
     {
@@ -12,7 +8,6 @@ namespace DonVo.FactoryManagement.Models.Enums
         PurchasePayment,
         Income,
         Expense
-
     }
 
     public enum PayablePurpose
@@ -29,21 +24,25 @@ namespace DonVo.FactoryManagement.Models.Enums
         BAD,
         DEFECTED
     }
+
     public enum StockInSource
     {
         Purchase,
         Production
     }
+
     public enum MonthFormat
     {
         MMMM
     }
+
     public enum TypeIncome
     {
         Sales,
         ClientPaymentRecieved,
         PurchaseReturn
     }
+
     public enum TypeExpense
     {
         Purchase,
@@ -52,6 +51,7 @@ namespace DonVo.FactoryManagement.Models.Enums
         SalesReturn
 
     }
+
     public enum TypeInvoice
     {
         StaffPayment,

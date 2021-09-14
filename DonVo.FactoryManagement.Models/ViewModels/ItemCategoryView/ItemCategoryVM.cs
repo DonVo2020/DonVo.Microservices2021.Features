@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.ItemCategoryView
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.ItemCategoryView
 {
-   public class ItemCategoryVM
+    public class ItemCategoryVM
     {
         public string Name { get; set; }
         public string FactoryId { get; set; }

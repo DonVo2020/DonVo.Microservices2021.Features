@@ -51,10 +51,10 @@ namespace DonVo.MessagingService.API.xUnitTest
                     PasswordHash = hashedpassword,
                     PasswordSalt = Convert.ToBase64String(Array.Empty<byte>())
                 });
+
             string jwtToken = "jwtToken";
             jwtServiceMock.Setup(q => q.CreateToken(It.IsAny<Dictionary<string, string>>())).Returns(jwtToken);
             passwordMock.Setup(q => q.HashText(It.IsAny<string>(), It.IsAny<byte[]>())).Returns(hashedpassword);
-
 
             var actionResult = authController.Login(loginRequest);
 
@@ -85,7 +85,6 @@ namespace DonVo.MessagingService.API.xUnitTest
             loggerMock.Verify(x => x.Error(It.IsAny<string>()), Times.Once);
 
             Assert.Equal("The username or password is incorrect.", loginResponse.Error);
-
         }
 
         [Fact]
@@ -131,6 +130,7 @@ namespace DonVo.MessagingService.API.xUnitTest
                     PasswordSalt = Convert.ToBase64String(Array.Empty<byte>()),
                     Id = new MongoDB.Bson.ObjectId("507f1f77bcf86cd799439011")
                 });
+
             passwordMock.
                 Setup(q => q.HashText(It.IsAny<string>(), It.IsAny<byte[]>())).
                 Returns(string.Empty);
@@ -298,7 +298,6 @@ namespace DonVo.MessagingService.API.xUnitTest
             passwordMock.
                 Setup(q => q.GenerateSalt()).
                 Throws(new Exception("Unexpected error"));
-
 
             var actionResult = authController.Register(registerRequest);
             Assert.IsType<BadRequestObjectResult>(actionResult);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.Equipment
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.Equipment
 {
     public class EquipmentVM
     {
@@ -14,6 +10,5 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Equipment
         public string EquipmentCategoryName { get; set; }
         public string FactoryId { get; set; }
         public string Id { get; set; }
-
     }
 }

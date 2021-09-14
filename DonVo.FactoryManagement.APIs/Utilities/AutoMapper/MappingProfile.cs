@@ -105,14 +105,11 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             //.ForAllOtherMembers(act => act.Ignore());
 
 
-
-
             //CreateMap<AddCustomerViewModel, Address>()
             //    .ForMember(dest => dest.PresentAddress, act => act.MapFrom(src => src.PresentAddress))
             //    .ForMember(dest => dest.PermanentAddress, act => act.MapFrom(src => src.PermanentAddress))
             //    .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
             //    .ForAllOtherMembers(act => act.Ignore());
-
 
             //CreateMap<AddCustomerViewModel, Phone>()
             //    .ForMember(dest => dest.Number, act => act.MapFrom(src => src.CellNo))
@@ -257,7 +254,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
             .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
             .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_ExpenseTypeVM()
         {
@@ -273,7 +269,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
             .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
             .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_IncomeTypeVM()
         {
@@ -289,7 +284,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
             .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
             .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_InvoiceTypeVM()
         {
@@ -305,7 +299,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
             .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
             .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_UpdateCustomerViewModelmm()
         {
@@ -349,7 +342,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.CategoryName, act => act.MapFrom(src => src.ItemCategory.Name))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
             // ADDITION + UPDATE 
             CreateMap<ItemVM, Item>()
                   .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
@@ -360,7 +352,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
         }
         public void Mapping_CustomerListView()
         {
-
             //           CreateMap<Customer, ListCustomerVM>()
             //                    .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
             //                     .ForMember(dest => dest.Email, act => act.MapFrom(src => src.Email))
@@ -403,7 +394,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
         }
         public void Mapping_Purchase()
         {
-
             //------------------------------Expense-------------------------------------
             // Addition
             // InvoiceId 
@@ -420,7 +410,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => "Paid to " +
                  src.SupplierVM.Name))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------------Invoice-------------------------------------
             // Addition
@@ -440,8 +429,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //----------------------------------Payable-------------------------------------
             // Addition
             // InvoiceId, 
@@ -454,7 +441,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Purchase Due"))
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " to " + src.SupplierVM.Name))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Purchase-------------------------------------
             // Addition
@@ -500,8 +486,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.Source, act => act.MapFrom(src => StockInSource.Purchase.ToString()))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //-------------------------------------Transaction-------------------------------------
             // Addition
             // Amount, InvoiceId , PaymentStatus ,TransactionType
@@ -533,7 +517,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                //.ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => !(src.DueAmount > 0)))
                .ForMember(dest => dest.OcurranceDate, act => act.MapFrom(src => src.DateOfOcurrance))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Purchase-------------------------------------
             // Addition
@@ -568,7 +551,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " from " + src.CustomerVM.Name))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-------------------------------Invoice-------------------------------------
             // Addition
             // InvoiceId 
@@ -599,7 +581,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Sales"))
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => "Sales Due from " + src.CustomerVM.Name))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Sales-------------------------------------
             // Addition
@@ -644,8 +625,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.CurrentDateTime, act => act.MapFrom(src => DateTime.Now))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //-------------------------------------Transaction-------------------------------------
             // Addition
             // Amount, InvoiceId , PaymentStatus ,TransactionType
@@ -676,7 +655,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                //.ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => !(src.DueAmount > 0)))
                .ForMember(dest => dest.OcurranceDate, act => act.MapFrom(src => src.DateOfOcurrance))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Purchase-------------------------------------
             // Addition
@@ -710,7 +688,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " from " + src.ClientName))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-------------------------------Invoice-------------------------------------
             //
             CreateMap<PaymentVM, Invoice>()
@@ -727,7 +704,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                //.ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => !(src.DueAmount > 0)))
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------------PaymentVM-------------------------------------
             //
@@ -746,7 +722,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                //.ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => !(src.DueAmount > 0)))
                .ForMember(dest => dest.PaymentDate, act => act.MapFrom(src => src.DateOfOcurrance))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------------------Transaction-------------------------------------
             // PaymentStatus ,TransactionType
@@ -805,7 +780,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Sales"))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-----------------------------------Income-------------------------------------
             CreateMap<Income, CustomerHistory>()
                 .ForMember(dest => dest.RecievedAmount, act => act.MapFrom(src => src.Amount))
@@ -815,7 +789,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Type, act => act.MapFrom(src => "IncomeItem"))
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Expense-------------------------------------
             CreateMap<Expense, CustomerHistory>()
@@ -827,8 +800,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //----------------------------Receivable-------------------------------
             CreateMap<Receivable, CustomerHistory>()
                  .ForMember(dest => dest.ReceivableAmount, act => act.MapFrom(src => src.Amount))
@@ -838,7 +809,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Type, act => act.MapFrom(src => "ReceivableItem"))
                   .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForAllOtherMembers(act => act.Ignore());
-
 
             //----------------------------Payable-------------------------------
             CreateMap<Payable, CustomerHistory>()
@@ -879,7 +849,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Purchase"))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-----------------------------------Expense-------------------------------------
             CreateMap<Expense, SupplierHistory>()
                 .ForMember(dest => dest.PaidAmount, act => act.MapFrom(src => src.Amount))
@@ -889,7 +858,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Type, act => act.MapFrom(src => "ExpenseItem"))
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Income-------------------------------------
             CreateMap<Income, SupplierHistory>()
@@ -901,7 +869,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------Receivable-------------------------------
             CreateMap<Receivable, SupplierHistory>()
                  .ForMember(dest => dest.ReceivableAmount, act => act.MapFrom(src => src.Amount))
@@ -912,7 +879,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------Payable-------------------------------
             CreateMap<Payable, SupplierHistory>()
                  .ForMember(dest => dest.PayableAmount, act => act.MapFrom(src => src.Amount))
@@ -922,7 +888,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Type, act => act.MapFrom(src => "PayableItem"))
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_Production()
         {
@@ -942,7 +907,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.UnitPrice, act => act.MapFrom(src => src.UnitPrice))
                   .ForMember(dest => dest.Month, act => act.MapFrom(src => DateTime.Now.ToString(MonthFormat.MMMM.ToString())))
                   .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Production-------------------------------------
 
@@ -979,8 +943,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                     .ForMember(dest => dest.UpdatedDateTime, act => act.MapFrom(src => src.UpdatedDateTime))
                     .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //-------------------------------------StockIn-------------------------------------
             // Addition
             // InvoiceId
@@ -998,7 +960,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.ExecutorId, act => act.MapFrom(src => src.ExecutorId))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------------Payable-------------------------------------
             // Addition
             // InvoiceId, 
@@ -1011,7 +972,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " to " + src.StaffName))
                 //.ForMember(dest => dest.InvoiceId, act => act.MapFrom(src => src.InvoiceId))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------------------Stock-------------------------------------
             // Addition
@@ -1041,8 +1001,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => false))
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
-
-
         }
         public void Mapping_StaffHistory()
         {
@@ -1075,7 +1033,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Production"))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-----------------------------------Expense-------------------------------------
             CreateMap<Expense, StaffHistory>()
                 .ForMember(dest => dest.PaidAmount, act => act.MapFrom(src => src.Amount))
@@ -1085,7 +1042,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Type, act => act.MapFrom(src => "ExpenseItem"))
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //-----------------------------------Income-------------------------------------
             CreateMap<Income, StaffHistory>()
@@ -1097,7 +1053,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------Receivable-------------------------------
             CreateMap<Receivable, StaffHistory>()
                  .ForMember(dest => dest.ReceivableAmount, act => act.MapFrom(src => src.Amount))
@@ -1108,7 +1063,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------Payable-------------------------------
             CreateMap<Payable, StaffHistory>()
                  .ForMember(dest => dest.PayableAmount, act => act.MapFrom(src => src.Amount))
@@ -1118,11 +1072,9 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Type, act => act.MapFrom(src => "PayableItem"))
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_SalesReturn()
         {
-
             // StockIn
             //-------------------------------------StockIn-------------------------------------
             // Addition
@@ -1142,7 +1094,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.ExecutorId, act => act.MapFrom(src => src.EmployeeId))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
             // Invoice
             //-------------------------------Invoice-------------------------------------
             // Addition
@@ -1161,7 +1112,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => false))
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------------Invoice-------------------------------------
             // Addition
@@ -1203,7 +1153,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   //.ForMember(dest => dest.EmployeeId, act => act.MapFrom(src => src.ExecutorId))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
             //------------------------------Expense-------------------------------------
             // Addition
             // InvoiceId 
@@ -1220,7 +1169,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " Paid to " + src.CustomerName))
 
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //----------------------------------Payable-------------------------------------
             CreateMap<Payable, SalesReturnVM>()
@@ -1272,7 +1220,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
         }
         public void Mapping_PurchaseReturn()
         {
-
             // Invoice
             //-------------------------------Invoice-------------------------------------
             CreateMap<PurchaseReturnVM, Invoice>()
@@ -1289,7 +1236,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => false))
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
-
 
             // StockOut
             //-------------------------------------StockOut-------------------------------------
@@ -1309,7 +1255,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                   .ForMember(dest => dest.CurrentDateTime, act => act.MapFrom(src => DateTime.Now))
                   .ForAllOtherMembers(act => act.Ignore());
 
-
             //------------------------------Income-------------------------------------
             // Addition
             // InvoiceId 
@@ -1325,10 +1270,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => "Purchase Return"))
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => " from  " + src.SupplierName))
                 .ForAllOtherMembers(act => act.Ignore());
-
-
-
-
 
             //-------------------------------REVERSE Invoice-------------------------------------
             // Addition
@@ -1397,9 +1338,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.ExpiryDate, act => act.MapFrom(src => DateTime.Now.AddYears(1)))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
-
-
             //-------------------------------------Transaction-------------------------------------
             // PaymentStatus ,TransactionType
             CreateMap<PurchaseReturnVM, TblTransaction>()
@@ -1415,14 +1353,9 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => "Recieved from " + src.SupplierName))
                  .ForMember(dest => dest.PaymentStatus, act => act.MapFrom(src => "NA"))
                  .ForAllOtherMembers(act => act.Ignore());
-
-
-
-
         }
         public void Mapping_MonthlyReport()
         {
-
             //----------------------------MonthlyProduction-------------------------------
             CreateMap<Production, MonthlyProduction>()
                .ForMember(dest => dest.CreatedDateTime, act => act.MapFrom(src => src.EntryDate))
@@ -1437,7 +1370,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.Month, act => act.MapFrom(src => src.EntryDate.ToString(MonthFormat.MMMM.ToString())))
                .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------MonthlyReceivable-------------------------------
             CreateMap<Receivable, MonthlyReceivable>()
                  .ForMember(dest => dest.Amount, act => act.MapFrom(src => src.Amount))
@@ -1449,7 +1381,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
                  .ForAllOtherMembers(act => act.Ignore());
 
-
             //----------------------------MonthlyPayable-------------------------------
             CreateMap<Payable, MonthlyPayable>()
                  .ForMember(dest => dest.Amount, act => act.MapFrom(src => src.Amount))
@@ -1460,7 +1391,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
                  .ForAllOtherMembers(act => act.Ignore());
-
 
             //-------------------------MonthlyExpense----------------------------------
             CreateMap<Expense, MonthlyExpense>()
@@ -1488,7 +1418,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
                  .ForAllOtherMembers(act => act.Ignore());
 
-
             //-------------------------------------Transaction-------------------------------------
             // PaymentStatus ,TransactionType
             CreateMap<TblTransaction, MonthlyTransaction>()
@@ -1508,8 +1437,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.CreatedDateTime, act => act.MapFrom(src => src.CreatedDateTime))
                  .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //----------------------------------Payable-------------------------------------
             //// Addition
             //// InvoiceId, 
@@ -1521,7 +1448,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
             //    .ForMember(dest => dest.InvoiceId, act => act.MapFrom(src => src.InvoiceId))
             //    .ForMember(dest => dest.Purpose, act => act.MapFrom(src => PayablePurpose.PurchaseDue.ToString() + " to " + src.SupplierVM.Name))
             //    .ForAllOtherMembers(act => act.Ignore());
-
 
             //----------------------------MonthlyReceivable-------------------------------
             CreateMap<Payable, MonthlyPayable>()
@@ -1552,7 +1478,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //------------------------------Income-------------------------------------
             // Addition
             // InvoiceId 
@@ -1573,8 +1498,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
-
             //-------------------------------Invoice-------------------------------------
             // Addition
             // InvoiceId 
@@ -1592,8 +1515,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                //.ForMember(dest => dest.IsFullyPaid, act => act.MapFrom(src => !(src.DueAmount > 0)))
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
-
-
 
             //-------------------------------------Transaction-------------------------------------
             // Addition
@@ -1614,7 +1535,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
         }
         public void Mapping_Expense()
         {
-
             //------------------------------Expense-------------------------------------
             // Addition
             // InvoiceId 
@@ -1630,7 +1550,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Description, act => act.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
-
 
             //------------------------------Expense-------------------------------------
             // Addition
@@ -1652,7 +1571,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                 .ForMember(dest => dest.Purpose, act => act.MapFrom(src => src.Purpose))
                 .ForAllOtherMembers(act => act.Ignore());
 
-
             //-------------------------------Invoice-------------------------------------
             // Addition
             // InvoiceId 
@@ -1671,7 +1589,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                .ForMember(dest => dest.DateOfOcurrance, act => act.MapFrom(src => DateTime.Now))
                .ForAllOtherMembers(act => act.Ignore());
 
-
             //-------------------------------------Transaction-------------------------------------
             // Addition
             // Amount, InvoiceId , PaymentStatus ,TransactionType
@@ -1688,10 +1605,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                  .ForMember(dest => dest.PaymentStatus, act => act.MapFrom(src => "NA"))
                  .ForMember(dest => dest.Description, act => act.MapFrom(src => "Paid to " + src.ClientName))
                  .ForAllOtherMembers(act => act.Ignore());
-
-
-
-
         }
         public void Mapping_Factory()
         {
@@ -1717,7 +1630,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
               .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
               .ForMember(dest => dest.ImageUrl, act => act.MapFrom(src => src.ImageUrl))
               .ForAllOtherMembers(act => act.Ignore());
-
         }
         public void Mapping_PaymentStatus()
         {
@@ -1763,8 +1675,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                      .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                      .ForMember(dest => dest.FactoryId, act => act.MapFrom(src => src.FactoryId))
                      .ForAllOtherMembers(act => act.Ignore());
-
-
         }
         public void Mapping_Role()
         {
@@ -1852,7 +1762,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
         }
         public void Mapping_ApiResourceMapping()
         {
-
             CreateMap<ApiResourceMapping, ApiResourceMappingVM>()
                         .ForMember(dest => dest.Controller, act => act.MapFrom(src => src.Controller))
                         .ForMember(dest => dest.Resource, act => act.MapFrom(src => src.Resource))
@@ -1865,8 +1774,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.AutoMapper
                         .ForMember(dest => dest.Action, act => act.MapFrom(src => src.Action))
                         .ForMember(dest => dest.Id, act => act.MapFrom(src => src.Id))
                         .ForAllOtherMembers(act => act.Ignore());
-
         }
-
     }
 }

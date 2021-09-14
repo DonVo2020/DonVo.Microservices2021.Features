@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Production
 {
@@ -13,10 +11,8 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Production
         public decimal Unitprice { get; set; }
         public long TotalAmount { get; set; }
         public DateTime CreatedDateTime { get; set; }
-
         public string Month { get; set; }
         public string Id { get; set; }
         public string FactoryId { get; set; }
-
     }
 }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.Role
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.Role
 {
-   public class RoleVM
+    public class RoleVM
     {
-       
         public string Id { get; set; }
         public string FactoryId { get; set; }
         public string Name { get; set; }
-
         public bool Item { get; set; }
         public bool ItemCategory { get; set; }
         public bool Equipment { get; set; }

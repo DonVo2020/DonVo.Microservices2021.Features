@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
 {
-   public class WrapperPurchaseListVM : CommonVM
+    public class WrapperPurchaseListVM : CommonVM
     {
         public long TotalRecords { get; set; }
         public List<PurchaseVM> ListOfData { get; set; }
-
     }
 }

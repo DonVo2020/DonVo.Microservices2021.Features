@@ -41,8 +41,8 @@ namespace Service
         IUserAuthInfoService _UserAuthInfoService;
         IUserRoleService _UserRoleService;
         readonly IRepositoryWrapper _repositoryWrapper;
-        readonly IMapper _mapper;
-        readonly ILoggerManager _loggerManager;
+        //readonly IMapper _mapper;
+        //readonly ILoggerManager _loggerManager;
         readonly IUtilService _utilService;
         IApiResourceMappingService _ApiResourceMappingService;
         public ServiceWrapper(
@@ -80,8 +80,8 @@ namespace Service
              IUserAuthInfoService UserAuthInfoService,
              IUserRoleService UserRoleService,
              IRepositoryWrapper repositoryWrapper,
-             IMapper mapper,
-             ILoggerManager loggerManager,
+             //IMapper mapper,
+             //ILoggerManager loggerManager,
              IUtilService utilService,
              IApiResourceMappingService ApiResourceMappingService
              )
@@ -120,8 +120,8 @@ namespace Service
             this._UserAuthInfoService = UserAuthInfoService;
             this._UserRoleService = UserRoleService;
             this._repositoryWrapper = repositoryWrapper;
-            this._mapper = mapper;
-            this._loggerManager = loggerManager;
+            //this._mapper = mapper;
+            //this._loggerManager = loggerManager;
             this._utilService = utilService;
             this._ApiResourceMappingService = ApiResourceMappingService;
         }

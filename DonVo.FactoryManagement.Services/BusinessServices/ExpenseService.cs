@@ -35,7 +35,6 @@ namespace Service.BusinessServices
             //    x.Customer.Name.Contains(dataListVM.GlobalFilter);
             //}
 
-
             var ExpenseList = await _repositoryWrapper
                 .Expense
                 .FindAll()
@@ -76,7 +75,6 @@ namespace Service.BusinessServices
 
           //  ExpenseList = _utilService.ConcatList<Expense>(ExpenseList, _utilService.ConcatList<Expense>(ExpenseList_1, ExpenseList_2));
 
-
             var dataRowCount = await _repositoryWrapper.Expense.NumOfRecord();
             List<ExpenseVM> ExpenseVMLists = new();
             ExpenseVMLists = _utilService.GetMapper().Map<List<Expense>, List<ExpenseVM>>(ExpenseList);
@@ -108,7 +106,6 @@ namespace Service.BusinessServices
             transactionToAdd.InvoiceId = invoiceToAdd.Id;
             _repositoryWrapper.Transaction.Create(transactionToAdd);
 
-
             Task<int> t1 = _repositoryWrapper.Expense.SaveChangesAsync();
             Task<int> t2 = _repositoryWrapper.Invoice.SaveChangesAsync();
             Task<int> t3 = _repositoryWrapper.Transaction.SaveChangesAsync();
@@ -125,6 +122,7 @@ namespace Service.BusinessServices
             WrapperExpenseListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         // not used
         public async Task<WrapperExpenseListVM> Update(string id, ExpenseVM vm)
         {
@@ -134,7 +132,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.Expense.SaveChangesAsync();
             this._utilService.LogInfo("Successful In Updating Item Cateory");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -142,9 +139,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperExpenseListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperExpenseListVM> Delete(ExpenseVM itemTemp)
         {
             Task<IEnumerable<Expense>> ExpenseTask = _repositoryWrapper.Expense.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -157,7 +156,6 @@ namespace Service.BusinessServices
             var transactionToDelete = transactionTask.Result.ToList().FirstOrDefault();
             var invoiceToDelete = invoiceTask.Result.ToList().FirstOrDefault();
 
-
             //if (item == null)
             //{
             //    return new WrapperExpenseListVM();
@@ -166,11 +164,9 @@ namespace Service.BusinessServices
             _repositoryWrapper.Transaction.Delete(transactionToDelete);
             _repositoryWrapper.Invoice.Delete(invoiceToDelete);
 
-
             await _repositoryWrapper.Expense.SaveChangesAsync();
             await _repositoryWrapper.Transaction.SaveChangesAsync();
             await _repositoryWrapper.Invoice.SaveChangesAsync();
-
 
             var dataParam = new GetDataListVM()
             {
@@ -179,6 +175,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperExpenseListVM data = await GetListPaged(dataParam);
             return data;
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DonVo.FactoryManagement.Models.ViewModels.Payment
+﻿namespace DonVo.FactoryManagement.Models.ViewModels.Payment
 {
     public class GetPaymentDataListVM : GetDataListVM
     {

@@ -21,6 +21,7 @@ namespace Service.BusinessServices
             this._repositoryWrapper = repositoryWrapper;
             this._utilService = utilService;
         }
+
         public async Task<WrapperItemListVM> GetListPaged(GetDataListVM dataListVM)
         {
             System.Linq.Expressions.Expression<Func<Item, bool>> globalFilterExpression = (x) => true;
@@ -34,8 +35,7 @@ namespace Service.BusinessServices
                 || x.ItemCategory.Name.Contains(dataListVM.GlobalFilter)
                 || x.UnitPrice.ToString().Contains(dataListVM.GlobalFilter);
             }
-            
-            
+                      
             var itemList = await _repositoryWrapper.Item
                 .FindAll() 
                 .Where(x => x.FactoryId == dataListVM.FactoryId)
@@ -56,6 +56,7 @@ namespace Service.BusinessServices
             };
             return wrapper;
         }
+
         public async Task<WrapperItemListVM> Add(ItemVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<ItemVM, Item>(vm);
@@ -65,7 +66,6 @@ namespace Service.BusinessServices
             await _repositoryWrapper.Item.SaveChangesAsync();
             this._utilService.LogInfo("Successful In saving  Item");
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -73,9 +73,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperItemListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperItemListVM> Update(string id, ItemVM vm)
         {
             IEnumerable<Item> ItemDB =await _repositoryWrapper.Item.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -94,6 +96,7 @@ namespace Service.BusinessServices
             WrapperItemListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperItemListVM> Delete(ItemVM itemTemp)
         {
             var itemTask = await _repositoryWrapper.Item.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -111,6 +114,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperItemListVM data = await GetListPaged(dataParam);
             return data;
         }

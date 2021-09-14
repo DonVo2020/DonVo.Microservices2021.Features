@@ -17,7 +17,7 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Auth
     [AttributeUsage(AttributeTargets.All)]
     public class FactoryAuthorize : Attribute, IAuthorizationFilter
     {
-        private readonly int i = 0;
+        //private readonly int i = 0;
         private IRepositoryWrapper _repositoryWrapper;
         private IServiceWrapper _serviceWrapper;
         private FactoryManagementContext _context;
@@ -38,11 +38,9 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Auth
             _utilService = (IUtilService)services.GetService(typeof(IUtilService));
             _context = new FactoryManagementContext();
 
-
             var actionName = "";
             var ctrlName = "";
             filterContext.HttpContext.Request.Headers.TryGetValue("Authorization", out Microsoft.Extensions.Primitives.StringValues authorizationToken);
-
 
             if (filterContext != null)
             {
@@ -115,9 +113,7 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Auth
                                 },
                             };
                         }
-
                     }
-
                 }
                 else
                 {
@@ -160,11 +156,10 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Auth
             ApiResourceMappingVM data = _utilService.Mapper.Map<ApiResourceMapping, ApiResourceMappingVM>(apiResource.FirstOrDefault());
             return data;
             // var context = new FactoryManagementContext();
-
         }
         public UserRole GetUserRole(string UserId)
         {
-            var connectionstring = "server=DESKTOP-VBDPK1F\\SQLEXPRESS; database=FactoryManagementDB; Integrated Security=true";
+            var connectionstring = "server=.\\SQLEXPRESS; database=FactoryManagementDB; Integrated Security=true";
             var optionsBuilder = new DbContextOptionsBuilder<FactoryManagementContext>();
             optionsBuilder.UseSqlServer(connectionstring);
             using FactoryManagementContext dbContext = new(optionsBuilder.Options);
@@ -179,8 +174,6 @@ namespace DonVo.FactoryManagement.APIs.Utilities.Auth
                 .Include(x => x.Role)
                 .ToList().FirstOrDefault();
             return userRole;
-
         }
-
     }
 }

@@ -27,7 +27,6 @@ namespace DonVo.MessagingService.API.Controllers
             this.accountRepository = accountRepository;
         }
 
-
         /// <summary> sends message to opponent </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -37,8 +36,6 @@ namespace DonVo.MessagingService.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         public IActionResult SendMessage(SendRequest request)
         {
-            //TODO: event fırlat
-
             var validationResult = request.IsValid();
             if (validationResult.Key == false)
             {
@@ -67,7 +64,6 @@ namespace DonVo.MessagingService.API.Controllers
                     logger.Info($"Receiver account blocked. Request : '{System.Text.Json.JsonSerializer.Serialize(request)}'");
                     return BadRequest(new BadRequestResponse("Receiver account blocked you."));
                 }
-
 
                 var createResult = messageRepository.Create(new MessageModel
                 {
@@ -118,7 +114,6 @@ namespace DonVo.MessagingService.API.Controllers
             return Ok(message);
         }
 
-
         /// <summary> retrieves last certain amount messages from message that has id specified in parameters </summary>
         /// <param name="messageId"> id of message that start point to retrospective dialog </param>
         /// <returns> found message id list </returns>
@@ -153,7 +148,6 @@ namespace DonVo.MessagingService.API.Controllers
             });
         }
 
-
         /// <summary> retrieves latest message between signed in user and opponent user for start point </summary>
         /// <param name="opponent"> user messaging with </param>
         /// <returns> latest message id </returns>
@@ -186,7 +180,6 @@ namespace DonVo.MessagingService.API.Controllers
                 MessageId = messageId
             });
         }
-
 
         /// <summary> blocks opponent user to send message </summary>
         /// <param name="request"> user messaging with </param>
@@ -221,8 +214,6 @@ namespace DonVo.MessagingService.API.Controllers
             }
             return Ok();
         }
-
     }
-
 }
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Production
 {
@@ -24,11 +22,5 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Production
     //    public long TotalRecords { get; set; }
     //    public List<MonthlyProduction> ListOfData { get; set; }
     //}
-
-
-
-
-
-
 
 }

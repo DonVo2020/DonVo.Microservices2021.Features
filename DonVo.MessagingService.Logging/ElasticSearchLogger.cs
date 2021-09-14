@@ -18,7 +18,6 @@ namespace DonVo.MessagingService.Logging
                 .WriteTo.Elasticsearch(ConfigureElasticSearchSink(configuration))
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
-
         }
 
         private static ElasticsearchSinkOptions ConfigureElasticSearchSink(IConfiguration configuration)
@@ -29,7 +28,6 @@ namespace DonVo.MessagingService.Logging
                 IndexFormat = configuration.GetValue<string>("ElasticConfiguration:IndexFormat")
             };
         }
-
 
         public void Error(string error, Exception exception)
         {
@@ -54,6 +52,7 @@ namespace DonVo.MessagingService.Logging
                 System.Diagnostics.Debug.WriteLine($"Couldn't log to elastic : {ex.Message}", ex);
             }
         }
+
         public void Info(string info)
         {
             try

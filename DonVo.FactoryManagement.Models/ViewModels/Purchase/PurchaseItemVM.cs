@@ -3,12 +3,10 @@ using DonVo.FactoryManagement.Models.ViewModels.ItemCategoryView;
 using DonVo.FactoryManagement.Models.ViewModels.ItemStatus;
 using DonVo.FactoryManagement.Models.ViewModels.Supplier;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
 {
-   public class PurchaseItemVM
+    public class PurchaseItemVM
     {
         public ItemVM Item { get; set;}
         public string ItemName { get; set; }

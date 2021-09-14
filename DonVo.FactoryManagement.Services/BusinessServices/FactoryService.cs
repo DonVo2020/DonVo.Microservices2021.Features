@@ -13,14 +13,12 @@ namespace Service.BusinessServices
     public class FactoryService : IFactoryService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
+
         public FactoryService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
         {
             this._repositoryWrapper = repositoryWrapper;
-
             this._utilService = utilService;
-
         }
 
         public async Task<WrapperFactoryListVM> GetListPaged(GetDataListVM dataListVM)
@@ -43,13 +41,11 @@ namespace Service.BusinessServices
             };
             return wrapper;
         }
+
         public async Task<WrapperFactoryListVM> Add(FactoryVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<FactoryVM, Factory>(vm);
-
-
             entityToAdd = this._repositoryWrapper.Factory.Create(entityToAdd);
-
 
             #region Invoice Type
             this._repositoryWrapper.InvoiceType.Create(new InvoiceType()
@@ -177,7 +173,6 @@ namespace Service.BusinessServices
             }); 
             #endregion
 
-
             Task<int> t1 =  _repositoryWrapper.Factory.SaveChangesAsync();
             Task<int> t2 =  _repositoryWrapper.InvoiceType.SaveChangesAsync();
             Task<int> t3 =  _repositoryWrapper.ExpenseType.SaveChangesAsync();
@@ -194,6 +189,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperFactoryListVM data = await GetListPaged(dataParam);
             return data;
         }
@@ -204,7 +200,6 @@ namespace Service.BusinessServices
             _repositoryWrapper.Factory.Update(ItemUpdated);
             await _repositoryWrapper.Factory.SaveChangesAsync();
 
-
             var dataParam = new GetDataListVM()
             {
                 FactoryId = vm.FactoryId,
@@ -212,9 +207,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperFactoryListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperFactoryListVM> Delete(FactoryVM itemTemp)
         {
             IEnumerable<Factory> itemTask = await _repositoryWrapper.Factory.FindByConditionAsync(x => x.Id == itemTemp.Id);

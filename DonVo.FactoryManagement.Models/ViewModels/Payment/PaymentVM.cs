@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Payment
 {
-   public class PaymentVM
+    public class PaymentVM
     {
         public string InvoiceId { get; set; }
         public string InvoiceTypeId { get; set; }

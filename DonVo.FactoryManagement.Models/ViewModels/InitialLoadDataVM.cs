@@ -9,13 +9,11 @@ using DonVo.FactoryManagement.Models.ViewModels.ItemStatus;
 using DonVo.FactoryManagement.Models.ViewModels.Role;
 using DonVo.FactoryManagement.Models.ViewModels.Staff;
 using DonVo.FactoryManagement.Models.ViewModels.Supplier;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels
 {
-  public  class InitialLoadDataVM
+    public  class InitialLoadDataVM
     {
         public List<ItemVM> ItemVMs { get; set; }
         public List<ItemCategoryVM> ItemCategoryVMs { get; set; }
@@ -24,13 +22,9 @@ namespace DonVo.FactoryManagement.Models.ViewModels
         public List<StaffVM> StaffVMs { get; set; }
         public List<ItemStatusVM> ItemStatusVMs { get; set; }
         public List<ExpenseTypeVM> ExpenseTypeVMs { get; set; }
-
         public List<IncomeTypeVM> IncomeTypeVMs { get; set; }
-
         public List<InvoiceTypeVM> InvoiceTypeVMs { get; set; }
         public List<EquipmentVM> EquipmentVMs { get; set; }
-
         public List<RoleVM> RoleVMs { get; set; }
-
     }
 }

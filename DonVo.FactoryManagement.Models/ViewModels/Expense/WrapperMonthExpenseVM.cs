@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Expense
 {
-
-
     public class WrapperMonthExpenseVM
     {
         public WrapperMonthExpenseVM()
@@ -18,7 +14,4 @@ namespace DonVo.FactoryManagement.Models.ViewModels.Expense
         public List<MonthlyExpense> ListOfData { get; set; }
         public long TotalRecords { get; set; }
     }
-
-
-
 }

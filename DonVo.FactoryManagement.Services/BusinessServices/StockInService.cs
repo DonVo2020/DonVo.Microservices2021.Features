@@ -6,7 +6,6 @@ namespace Service.BusinessServices
     public class StockInService : IStockInService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public StockInService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)

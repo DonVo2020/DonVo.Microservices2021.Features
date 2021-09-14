@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Staff
 {
-   public class WrapperStaffHistory
+    public class WrapperStaffHistory
     {
 
         public WrapperStaffHistory()

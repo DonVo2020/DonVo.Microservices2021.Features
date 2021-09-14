@@ -21,15 +21,18 @@ namespace DonVo.FactoryManagement.Repositories
             this.RepositoryContext = repositoryContext;
             this.Util = _util;
         }
+
         public async Task<long> NumOfRecord()
         {
             return await RepositoryContext.Set<T>().AsQueryable().CountAsync();
         }
+
         public async Task<string> GetUniqueId()
         {
             int countOfRows = await RepositoryContext.Set<T>().AsQueryable().CountAsync();
             return typeof(T).Name.ToUpper() + countOfRows;
         }
+
         public IQueryable<T> FindAll()
         {
             Util.LogInfo("---STARTED FINDING ----" + typeof(T).Name.ToUpper() + "----------");
@@ -54,15 +57,16 @@ namespace DonVo.FactoryManagement.Repositories
             Util.LogInfo(expression.ToString());
             return await this.FindByCondition(expression).ToListAsync();
         }
+
         public async Task<IEnumerable<T>> FindByConditionAsyncNoTracking(Expression<Func<T, bool>> expression)
         {
             Util.LogInfo("---STARTED FINDING ----" + typeof(T).Name.ToUpper() + "----------");
             Util.LogInfo(expression.ToString());
             return await this.FindByCondition(expression).ToListAsync();
         }
+
         public T Create(T entity)
         {
-
             Type type = entity.GetType();
             _ = type.GetProperty("CreatedDateTime");
             _ = type.GetProperty("CreatedDateTime");
@@ -76,6 +80,7 @@ namespace DonVo.FactoryManagement.Repositories
             Util.LogInfo("-------" + typeof(T).Name.ToUpper() + "-----Added-----");
             return entity;
         }
+
         public List<T> CreateAll(List<T> entityList)
         {
             for (int i = 0; i < entityList.Count; i++)
@@ -94,6 +99,7 @@ namespace DonVo.FactoryManagement.Repositories
             Util.LogInfo("-------" + typeof(T).Name.ToUpper() + "-----All Added-----");
             return entityList;
         }
+
         public T Update(T entity)
         {
             Type type = entity.GetType();

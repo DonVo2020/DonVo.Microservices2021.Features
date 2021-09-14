@@ -13,7 +13,6 @@ namespace Service.BusinessServices
     public class RoleService : IRoleService
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
         private readonly IUtilService _utilService;
 
         public RoleService(IRepositoryWrapper repositoryWrapper, IUtilService utilService)
@@ -59,6 +58,7 @@ namespace Service.BusinessServices
 
             return wrapper;
         }
+
         public async Task<WrapperRoleListVM> Add(RoleVM vm)
         {
             var entityToAdd = _utilService.GetMapper().Map<RoleVM, Role>(vm);
@@ -77,9 +77,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperRoleListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperRoleListVM> Update(string id, RoleVM vm)
         {
             IEnumerable<Role> ItemDB = await _repositoryWrapper.Role.FindByConditionAsync(x => x.Id == id && x.FactoryId == vm.FactoryId);
@@ -95,9 +97,11 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperRoleListVM data = await GetListPaged(dataParam);
             return data;
         }
+
         public async Task<WrapperRoleListVM> Delete(RoleVM itemTemp)
         {
             IEnumerable<Role> itemTask = await _repositoryWrapper.Role.FindByConditionAsync(x => x.Id == itemTemp.Id && x.FactoryId == itemTemp.FactoryId);
@@ -117,6 +121,7 @@ namespace Service.BusinessServices
                 PageSize = 10,
                 TotalRows = 0
             };
+
             WrapperRoleListVM data = await GetListPaged(dataParam);
             return data;
         }

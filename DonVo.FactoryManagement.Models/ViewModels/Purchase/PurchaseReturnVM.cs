@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DonVo.FactoryManagement.Models.ViewModels.Purchase
 {
-   public class PurchaseReturnVM
+    public class PurchaseReturnVM
     {
         public string SupplierId { get; set; }
         public string SupplierName { get; set; } //--
